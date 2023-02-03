@@ -1,0 +1,6 @@
+framework module Pods_majorBookProject {
+  umbrella header "Pods-majorBookProject-umbrella.h"
+
+  export *
+  module * { export * }
+}
