@@ -16,6 +16,7 @@
 		7EE17E17298D6659006CF871 /* previewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE17E16298D6659006CF871 /* previewExtension.swift */; };
 		7EE17E19298D666A006CF871 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE17E18298D666A006CF871 /* LoginVC.swift */; };
 		7EE17E1B298D667C006CF871 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE17E1A298D667C006CF871 /* MainVC.swift */; };
+		DC422FF25AC2F3A4C5CE48B8 /* Pods_majorBookProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DC17AAD22374CD2953936A /* Pods_majorBookProject.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		7EE17E1A298D667C006CF871 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		9ACA4A35080527EC30418EA0 /* Pods-majorBookProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-majorBookProject.release.xcconfig"; path = "Target Support Files/Pods-majorBookProject/Pods-majorBookProject.release.xcconfig"; sourceTree = "<group>"; };
 		9E3353197E4FBB30DE6D91C9 /* Pods-majorBookProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-majorBookProject.debug.xcconfig"; path = "Target Support Files/Pods-majorBookProject/Pods-majorBookProject.debug.xcconfig"; sourceTree = "<group>"; };
+		B8DC17AAD22374CD2953936A /* Pods_majorBookProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_majorBookProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7415138ED9BED601FC7332A6 /* Pods_majorBookProject.framework in Frameworks */,
+				DC422FF25AC2F3A4C5CE48B8 /* Pods_majorBookProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				19FFC2119576CBD7C26D4699 /* Pods_majorBookProject.framework */,
+				B8DC17AAD22374CD2953936A /* Pods_majorBookProject.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
