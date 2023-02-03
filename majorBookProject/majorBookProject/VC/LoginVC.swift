@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {
     
     lazy var loginBtn: UIButton = {
         let loginbtn = UIButton()
-        loginbtn.backgroundColor = UIColor(red: 0.256, green: 0.28, blue: 0.854, alpha: 1)
+        loginbtn.backgroundColor = UIColor(named: "mainColor")
         loginbtn.layer.cornerRadius = 5
         loginbtn.setTitle("로그인", for: .normal)
         loginbtn.setTitleColor(.white, for: .normal)

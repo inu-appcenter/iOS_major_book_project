@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		19FFC2119576CBD7C26D4699 /* Pods_majorBookProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_majorBookProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19FFC2119576CBD7C26D4699 /* Pods_majorBookProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_majorBookProject.framework; path = "../../../../../../../../git/iOS_major_book_project/majorBookProject/Pods/Target Support Files/Pods-majorBookProject/Pods_majorBookProject.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE17DFD298D6610006CF871 /* majorBookProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = majorBookProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE17E00298D6610006CF871 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EE17E02298D6610006CF871 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,7 +52,6 @@
 				9E3353197E4FBB30DE6D91C9 /* Pods-majorBookProject.debug.xcconfig */,
 				9ACA4A35080527EC30418EA0 /* Pods-majorBookProject.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
