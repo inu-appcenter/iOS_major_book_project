@@ -24,14 +24,14 @@ class JoinDoneVC: UIViewController {
         label.frame = CGRect(x: 0, y: 0, width: 129, height: 84)
         label.backgroundColor = .white
         label.textColor = UIColor(red: 0.408, green: 0.408, blue: 0.408, alpha: 1)
-//        label.font = UIFont(name: "Pretendard-Medium", size: 30)
+        label.font = UIFont(name: "Pretendard-Medium", size: 30)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.textAlignment = .center
         let fullText = label.text ?? ""
         let attribtuedString = NSMutableAttributedString(string: fullText)
         let range = (fullText as NSString).range(of: "김가온")
-//        attribtuedString.addAttributes([.font: UIFont(name:  "Pretendard-Bold", size: 30) as Any, .foregroundColor: UIColor.black as Any], range: range)
+        attribtuedString.addAttributes([.font: UIFont(name:  "Pretendard-Bold", size: 30) as Any, .foregroundColor: UIColor.black as Any], range: range)
         label.attributedText = attribtuedString
         
         return label

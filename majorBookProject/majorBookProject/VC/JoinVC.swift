@@ -41,7 +41,7 @@ class JoinVC: UIViewController {
 
         var attText = AttributedString.init("단과대")
 
-//        attText.font = UIFont(name: "Pretendard-Light", size: 16)
+        attText.font = UIFont(name: "Pretendard-Light", size: 16)
             attText.foregroundColor = UIColor(red: 0.408, green: 0.408, blue: 0.408, alpha: 1)
         configuration.attributedTitle = attText
 
@@ -114,7 +114,7 @@ class JoinVC: UIViewController {
         let btn = createButton("가입완료")
         btn.layer.backgroundColor = UIColor(red: 0.683, green: 0.683, blue: 0.683, alpha: 1).cgColor
         btn.setTitleColor(UIColor(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
-//        btn.titleLabel?.font = UIFont(name: "Pretendard-Medium", size: 14)
+        btn.titleLabel?.font = UIFont(name: "Pretendard-Medium", size: 14)
         btn.addTarget(self, action: #selector(didTapJoinButton(_:)), for: .touchUpInside)
         
         return btn
@@ -199,7 +199,7 @@ class JoinVC: UIViewController {
         collegeDropDown.anchorView = self.collegeButton
         collegeDropDown.direction = .bottom
         collegeDropDown.bottomOffset = CGPoint(x: 0, y:(collegeDropDown.anchorView?.plainView.bounds.height)! + 50)
-//        collegeDropDown.textFont = UIFont(name: "Pretendard-Light", size: 16)!
+        collegeDropDown.textFont = UIFont(name: "Pretendard-Light", size: 16)!
         collegeDropDown.textColor =  UIColor(red: 0.408, green: 0.408, blue: 0.408, alpha: 1)
         collegeDropDown.layer.cornerRadius = 5
         collegeDropDown.cellHeight = 46
