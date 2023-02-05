@@ -1,8 +1,9 @@
 import Foundation
 import Then
+import DropDown
 import UIKit
 
-class MainViewController: UIViewController {
+class MainVC: UIViewController {
     
     
     lazy var memberView = UIView().then{
@@ -11,25 +12,42 @@ class MainViewController: UIViewController {
     }
     
     lazy var nameLabel = UILabel().then{
-        $0.text = "홍길동"
-        $0.font = .systemFont(ofSize: 20)
+        
+        var paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 0.83
+        $0.attributedText = NSMutableAttributedString(string: "김가온", attributes: [NSAttributedString.Key.kern: -0.4, NSAttributedString.Key.paragraphStyle: paragraphStyle])
+
+        $0.font = UIFont(name: "Pretendard-SemiBold", size: 20)
         $0.textColor = .white
     }
     
     lazy var majorLabel = UILabel().then{
         $0.text = "정보기술대학 컴퓨터공학부"
-        $0.font = .systemFont(ofSize: 14)
+        $0.font = UIFont(name: "Pretendard-Medium", size: 14)
         $0.textColor = .white
     }
     
+    lazy var searchBar = UISearchBar().then{
+        $0.placeholder = "검색어를 입력하세요"
+        let rightButton = UIButton()
+        rightButton.setImage(UIImage(named: "icon"), for: .normal)
+        $0.searchBarStyle = .minimal
+        $0.searchTextField.font = .systemFont(ofSize: 14)
+        
+    }
+    
+    private let collectionView:  UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .systemPink
+        return cv
+    }()
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         setupLayout()
-        
     }
     
     private func setupLayout() {
@@ -38,7 +56,8 @@ class MainViewController: UIViewController {
         [
             memberView,
             nameLabel,
-            majorLabel
+            majorLabel,
+            searchBar,
         ].forEach {self.view.addSubview($0)}
         setupConstraint()
         
@@ -49,7 +68,7 @@ class MainViewController: UIViewController {
         memberView.snp.makeConstraints{ make in
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.top.equalToSuperview().offset(24)
+            make.top.equalToSuperview().offset(71)
             make.height.equalTo(99)
         }
         nameLabel.snp.makeConstraints{ make in
@@ -61,7 +80,11 @@ class MainViewController: UIViewController {
             make.top.equalTo(nameLabel.snp.bottom).offset(7)
             
         }
-        
+        searchBar.snp.makeConstraints{ make in
+            make.trailing.equalToSuperview().offset(-16)
+            make.top.equalTo(memberView.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(112)
+        }
     }
     
     
@@ -70,11 +93,12 @@ class MainViewController: UIViewController {
 
 
 
+
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
 struct MainViewControllerPreView: PreviewProvider {
   static var previews: some View {
-    MainViewController().toPreview()
+    MainVC().toPreview()
   }
 }
     #endif

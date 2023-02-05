@@ -7,7 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7415138ED9BED601FC7332A6 /* Pods_majorBookProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FFC2119576CBD7C26D4699 /* Pods_majorBookProject.framework */; };
+		2FFE6012CA0F73D021C0756E /* Pods_majorBookProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407F70D45778683F856A5859 /* Pods_majorBookProject.framework */; };
+		7E6FDB1B298FBC46006775B0 /* searchResultCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1A298FBC46006775B0 /* searchResultCollectionView.swift */; };
+		7E6FDB26298FC465006775B0 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1D298FC465006775B0 /* Pretendard-Regular.otf */; };
+		7E6FDB27298FC465006775B0 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1E298FC465006775B0 /* Pretendard-ExtraLight.otf */; };
+		7E6FDB28298FC465006775B0 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1F298FC465006775B0 /* Pretendard-ExtraBold.otf */; };
+		7E6FDB29298FC465006775B0 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB20298FC465006775B0 /* Pretendard-Black.otf */; };
+		7E6FDB2A298FC465006775B0 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB21298FC465006775B0 /* Pretendard-Light.otf */; };
+		7E6FDB2B298FC465006775B0 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB22298FC465006775B0 /* Pretendard-Medium.otf */; };
+		7E6FDB2C298FC465006775B0 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB23298FC465006775B0 /* Pretendard-SemiBold.otf */; };
+		7E6FDB2D298FC465006775B0 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB24298FC465006775B0 /* Pretendard-Thin.otf */; };
+		7E6FDB2E298FC465006775B0 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB25298FC465006775B0 /* Pretendard-Bold.otf */; };
 		7EE17E01298D6610006CF871 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE17E00298D6610006CF871 /* AppDelegate.swift */; };
 		7EE17E03298D6610006CF871 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE17E02298D6610006CF871 /* SceneDelegate.swift */; };
 		7EE17E08298D6610006CF871 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EE17E06298D6610006CF871 /* Main.storyboard */; };
@@ -16,11 +26,22 @@
 		7EE17E17298D6659006CF871 /* previewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE17E16298D6659006CF871 /* previewExtension.swift */; };
 		7EE17E19298D666A006CF871 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE17E18298D666A006CF871 /* LoginVC.swift */; };
 		7EE17E1B298D667C006CF871 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE17E1A298D667C006CF871 /* MainVC.swift */; };
-		DC422FF25AC2F3A4C5CE48B8 /* Pods_majorBookProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DC17AAD22374CD2953936A /* Pods_majorBookProject.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		19FFC2119576CBD7C26D4699 /* Pods_majorBookProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_majorBookProject.framework; path = "../../../../../../../../git/iOS_major_book_project/majorBookProject/Pods/Target Support Files/Pods-majorBookProject/Pods_majorBookProject.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AA1E644AD4D6D9AAE12920F /* Pods-majorBookProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-majorBookProject.release.xcconfig"; path = "Target Support Files/Pods-majorBookProject/Pods-majorBookProject.release.xcconfig"; sourceTree = "<group>"; };
+		407F70D45778683F856A5859 /* Pods_majorBookProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_majorBookProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		437777A280964F6F9A48760F /* Pods-majorBookProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-majorBookProject.debug.xcconfig"; path = "Target Support Files/Pods-majorBookProject/Pods-majorBookProject.debug.xcconfig"; sourceTree = "<group>"; };
+		7E6FDB1A298FBC46006775B0 /* searchResultCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchResultCollectionView.swift; sourceTree = "<group>"; };
+		7E6FDB1D298FC465006775B0 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		7E6FDB1E298FC465006775B0 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
+		7E6FDB1F298FC465006775B0 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		7E6FDB20298FC465006775B0 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
+		7E6FDB21298FC465006775B0 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
+		7E6FDB22298FC465006775B0 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		7E6FDB23298FC465006775B0 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		7E6FDB24298FC465006775B0 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
+		7E6FDB25298FC465006775B0 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		7EE17DFD298D6610006CF871 /* majorBookProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = majorBookProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE17E00298D6610006CF871 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EE17E02298D6610006CF871 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,9 +52,6 @@
 		7EE17E16298D6659006CF871 /* previewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = previewExtension.swift; sourceTree = "<group>"; };
 		7EE17E18298D666A006CF871 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		7EE17E1A298D667C006CF871 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
-		9ACA4A35080527EC30418EA0 /* Pods-majorBookProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-majorBookProject.release.xcconfig"; path = "Target Support Files/Pods-majorBookProject/Pods-majorBookProject.release.xcconfig"; sourceTree = "<group>"; };
-		9E3353197E4FBB30DE6D91C9 /* Pods-majorBookProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-majorBookProject.debug.xcconfig"; path = "Target Support Files/Pods-majorBookProject/Pods-majorBookProject.debug.xcconfig"; sourceTree = "<group>"; };
-		B8DC17AAD22374CD2953936A /* Pods_majorBookProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_majorBookProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,21 +59,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7415138ED9BED601FC7332A6 /* Pods_majorBookProject.framework in Frameworks */,
-				DC422FF25AC2F3A4C5CE48B8 /* Pods_majorBookProject.framework in Frameworks */,
+				2FFE6012CA0F73D021C0756E /* Pods_majorBookProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		74967EEB8A4D853866DC855D /* Pods */ = {
+		5435C4A3E852D2725E81B5B8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9E3353197E4FBB30DE6D91C9 /* Pods-majorBookProject.debug.xcconfig */,
-				9ACA4A35080527EC30418EA0 /* Pods-majorBookProject.release.xcconfig */,
+				437777A280964F6F9A48760F /* Pods-majorBookProject.debug.xcconfig */,
+				2AA1E644AD4D6D9AAE12920F /* Pods-majorBookProject.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		7E6FDB1C298FC3F8006775B0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				7E6FDB20298FC465006775B0 /* Pretendard-Black.otf */,
+				7E6FDB25298FC465006775B0 /* Pretendard-Bold.otf */,
+				7E6FDB1F298FC465006775B0 /* Pretendard-ExtraBold.otf */,
+				7E6FDB1E298FC465006775B0 /* Pretendard-ExtraLight.otf */,
+				7E6FDB21298FC465006775B0 /* Pretendard-Light.otf */,
+				7E6FDB22298FC465006775B0 /* Pretendard-Medium.otf */,
+				7E6FDB1D298FC465006775B0 /* Pretendard-Regular.otf */,
+				7E6FDB23298FC465006775B0 /* Pretendard-SemiBold.otf */,
+				7E6FDB24298FC465006775B0 /* Pretendard-Thin.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		7EE17DF4298D6610006CF871 = {
@@ -63,8 +96,8 @@
 			children = (
 				7EE17DFF298D6610006CF871 /* majorBookProject */,
 				7EE17DFE298D6610006CF871 /* Products */,
-				74967EEB8A4D853866DC855D /* Pods */,
-				A14E7D9B9709A284F169D8BB /* Frameworks */,
+				5435C4A3E852D2725E81B5B8 /* Pods */,
+				E1268297E1458C2B056A39D4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +112,7 @@
 		7EE17DFF298D6610006CF871 /* majorBookProject */ = {
 			isa = PBXGroup;
 			children = (
+				7E6FDB1C298FC3F8006775B0 /* Fonts */,
 				7EE17E15298D664A006CF871 /* Extension */,
 				7EE17E14298D6645006CF871 /* VC */,
 				7EE17E00298D6610006CF871 /* AppDelegate.swift */,
@@ -87,6 +121,7 @@
 				7EE17E09298D6611006CF871 /* Assets.xcassets */,
 				7EE17E0B298D6611006CF871 /* LaunchScreen.storyboard */,
 				7EE17E0E298D6611006CF871 /* Info.plist */,
+				7E6FDB1A298FBC46006775B0 /* searchResultCollectionView.swift */,
 			);
 			path = majorBookProject;
 			sourceTree = "<group>";
@@ -108,11 +143,10 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		A14E7D9B9709A284F169D8BB /* Frameworks */ = {
+		E1268297E1458C2B056A39D4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				19FFC2119576CBD7C26D4699 /* Pods_majorBookProject.framework */,
-				B8DC17AAD22374CD2953936A /* Pods_majorBookProject.framework */,
+				407F70D45778683F856A5859 /* Pods_majorBookProject.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -124,11 +158,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EE17E11298D6611006CF871 /* Build configuration list for PBXNativeTarget "majorBookProject" */;
 			buildPhases = (
-				1479A9551EC06B5BF910492E /* [CP] Check Pods Manifest.lock */,
+				AFF0192BADC93F421DB7FD21 /* [CP] Check Pods Manifest.lock */,
 				7EE17DF9298D6610006CF871 /* Sources */,
 				7EE17DFA298D6610006CF871 /* Frameworks */,
 				7EE17DFB298D6610006CF871 /* Resources */,
-				312D6BA0D776541B8E686F20 /* [CP] Embed Pods Frameworks */,
+				28A16D857B78BEFA4196FA93 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -178,15 +212,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EE17E0D298D6611006CF871 /* LaunchScreen.storyboard in Resources */,
+				7E6FDB2E298FC465006775B0 /* Pretendard-Bold.otf in Resources */,
+				7E6FDB2A298FC465006775B0 /* Pretendard-Light.otf in Resources */,
+				7E6FDB26298FC465006775B0 /* Pretendard-Regular.otf in Resources */,
+				7E6FDB28298FC465006775B0 /* Pretendard-ExtraBold.otf in Resources */,
+				7E6FDB27298FC465006775B0 /* Pretendard-ExtraLight.otf in Resources */,
 				7EE17E0A298D6611006CF871 /* Assets.xcassets in Resources */,
+				7E6FDB29298FC465006775B0 /* Pretendard-Black.otf in Resources */,
+				7E6FDB2C298FC465006775B0 /* Pretendard-SemiBold.otf in Resources */,
 				7EE17E08298D6610006CF871 /* Main.storyboard in Resources */,
+				7E6FDB2D298FC465006775B0 /* Pretendard-Thin.otf in Resources */,
+				7E6FDB2B298FC465006775B0 /* Pretendard-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1479A9551EC06B5BF910492E /* [CP] Check Pods Manifest.lock */ = {
+		28A16D857B78BEFA4196FA93 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-majorBookProject/Pods-majorBookProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-majorBookProject/Pods-majorBookProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-majorBookProject/Pods-majorBookProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AFF0192BADC93F421DB7FD21 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -208,23 +268,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		312D6BA0D776541B8E686F20 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-majorBookProject/Pods-majorBookProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-majorBookProject/Pods-majorBookProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-majorBookProject/Pods-majorBookProject-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -232,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E6FDB1B298FBC46006775B0 /* searchResultCollectionView.swift in Sources */,
 				7EE17E01298D6610006CF871 /* AppDelegate.swift in Sources */,
 				7EE17E1B298D667C006CF871 /* MainVC.swift in Sources */,
 				7EE17E03298D6610006CF871 /* SceneDelegate.swift in Sources */,
@@ -378,7 +422,7 @@
 		};
 		7EE17E12298D6611006CF871 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9E3353197E4FBB30DE6D91C9 /* Pods-majorBookProject.debug.xcconfig */;
+			baseConfigurationReference = 437777A280964F6F9A48760F /* Pods-majorBookProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -407,7 +451,7 @@
 		};
 		7EE17E13298D6611006CF871 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9ACA4A35080527EC30418EA0 /* Pods-majorBookProject.release.xcconfig */;
+			baseConfigurationReference = 2AA1E644AD4D6D9AAE12920F /* Pods-majorBookProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
