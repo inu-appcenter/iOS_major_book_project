@@ -5,7 +5,7 @@ import SwiftUI
 import SnapKit
 
 
-class LoginViewController: UIViewController {
+class LoginVC: UIViewController {
     
     private let contentView = UIView()
     
@@ -41,7 +41,7 @@ class LoginViewController: UIViewController {
     private let imageView: UIImageView = {
         let imageV =  UIImageView()
         imageV.backgroundColor = .white
-        imageV.image = UIImage(named: "휘장 3")
+        imageV.image = UIImage(named: "insignia")
         return imageV
     }()
     
@@ -134,18 +134,16 @@ class LoginViewController: UIViewController {
         loginBtn.snp.makeConstraints{ make in
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-33)
+            make.bottom.equalToSuperview().offset(-94)
             make.height.equalTo(50)
         }
     }
     
     @objc func pushLoginButton(sender: UIButton!) {
-        if loginBtn.isSelected == true {
-            print("버튼 selected")
-            let mainViewController = MainViewController()
-            self.navigationController?.pushViewController(mainViewController, animated: true)
-            
-        }
+        print("버튼 selected")
+        let mainViewController = MainVC()
+        view.window?.rootViewController = mainViewController
+        view.window?.rootViewController?.dismiss(animated: true)
     
     }
 }
@@ -153,7 +151,7 @@ class LoginViewController: UIViewController {
 #if canImport(SwiftUI) && DEBUG
 struct ViewControllerPreView: PreviewProvider {
   static var previews: some View {
-    LoginViewController().toPreview()
+    LoginVC().toPreview()
   }
 }
     
