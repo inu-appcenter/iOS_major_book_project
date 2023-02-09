@@ -4,21 +4,30 @@ PODS:
   - Then (3.0.0)
 
 DEPENDENCIES:
-  - DropDown
+  - DropDown (from `https://github.com/snappymob/DropDown.git`, commit `57027168178b77a9463814fbeb6cda173f301854`)
   - SnapKit
   - Then
 
 SPEC REPOS:
   trunk:
-    - DropDown
     - SnapKit
     - Then
 
+EXTERNAL SOURCES:
+  DropDown:
+    :commit: 57027168178b77a9463814fbeb6cda173f301854
+    :git: https://github.com/snappymob/DropDown.git
+
+CHECKOUT OPTIONS:
+  DropDown:
+    :commit: 57027168178b77a9463814fbeb6cda173f301854
+    :git: https://github.com/snappymob/DropDown.git
+
 SPEC CHECKSUMS:
-  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  DropDown: bf260fd688978138019ad7d94f63a2362dad85ba
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 418c4022804942167b7e77db445baa4a59ceeecd
+PODFILE CHECKSUM: 9f10ef21606889a5c3f4b24d6bc8e75e3995585d
 
 COCOAPODS: 1.11.3

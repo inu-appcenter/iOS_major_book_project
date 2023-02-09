@@ -8,23 +8,21 @@ class MainVC: UIViewController, UICollectionViewDelegate {
     
     //MARK: - Component
     
+    lazy var bookmarkBtn = UIButton().then {
+        $0.setImage(UIImage(named: "bookmark_line"), for: .normal)
+    }
+    
+    lazy var gearBtn = UIButton().then {
+        $0.setImage(UIImage(named: "gear"), for: .normal)
+        
+    }
+    
     lazy var memberView = UIView().then{
         $0.backgroundColor = UIColor(named:"mainColor")
         $0.layer.cornerRadius = 5
         
     }
     
-    lazy var dropBtn = UIButton()
-    
-    lazy var dropView = UIView().then{
-        $0.isHidden = true
-        $0.backgroundColor = .clear
-        $0.layer.borderColor = UIColor(red: 0.683, green: 0.683, blue: 0.683, alpha: 1).cgColor
-        $0.layer.borderWidth = 1
-        $0.layer.cornerRadius = 5
-        
-
-    }
     
     lazy var nameLabel = UILabel().then{
         
@@ -54,13 +52,14 @@ class MainVC: UIViewController, UICollectionViewDelegate {
     
     let testArr = ["a","b","c","d"]
     private let tableView: UITableView = {
-        let tV =  UITableView(frame: .zero, style: .grouped)
+        let tV =  UITableView(frame: .zero, style: .plain)
         tV.layer.cornerRadius = 5
-        tV.layer.borderColor = UIColor(red: 0.683, green: 0.683, blue: 0.683, alpha: 1).cgColor
+        tV.layer.borderColor = UIColor.appColor(.gray3).cgColor
         tV.layer.borderWidth = 1
         tV.backgroundColor = .white
         tV.register(mainTableViewCell.self, forCellReuseIdentifier: mainTableViewCell.identifier)
-        tV.rowHeight = UITableView.automaticDimension
+        tV.separatorColor = UIColor.appColor(.gray3)
+        tV.separatorInset.left = 0
         return tV
     }()
     
@@ -118,15 +117,6 @@ class MainVC: UIViewController, UICollectionViewDelegate {
     
     private func attText(search:String) -> AttributedString {
         var attText = AttributedString.init(search)
-        
-//        var paragraphStyle = NSMutableParagraphStyle()
-//
-//        paragraphStyle.lineHeightMultiple = 0.83
-//
-//
-//
-//        view.attributedText = NSMutableAttributedString(string: "교수명", attributes: [NSAttributedString.Key.kern: -0.3, NSAttributedString.Key.paragraphStyle: paragraphStyle])
-
         attText.font = UIFont(name: "Pretendard-Regular", size: 14)
         attText.foregroundColor = UIColor(red: 0.408, green: 0.408, blue: 0.408, alpha: 1)
         
@@ -137,12 +127,10 @@ class MainVC: UIViewController, UICollectionViewDelegate {
     private func isDropDown(isDrop: Bool) {
         
         if isDrop == true {
-            searchMenu.layer.borderColor = UIColor(red: 0.365, green: 0.373, blue: 0.937, alpha: 1).cgColor
-            dropView.isHidden = false
+            searchMenu.layer.borderColor = UIColor.appColor(.point).cgColor
         }else {
-            searchMenu.layer.borderColor = UIColor(red: 0.683, green: 0.683, blue: 0.683, alpha: 1).cgColor
+    searchMenu.layer.borderColor = UIColor.appColor(.gray3).cgColor
             searchMenu.isSelected = false
-            dropView.isHidden = true
         }
         
     }
@@ -150,19 +138,21 @@ class MainVC: UIViewController, UICollectionViewDelegate {
     private func configureDropDown() {
 
         searchMenuDropDown.dataSource = ["교수명","학과명","과목명"]
-        searchMenuDropDown.anchorView = self.dropBtn
+        searchMenuDropDown.anchorView = self.searchMenu
         searchMenuDropDown.backgroundColor = .white
-        searchMenuDropDown.selectionBackgroundColor = UIColor(red: 0.963, green: 0.963, blue: 0.963, alpha: 1)
+        searchMenuDropDown.selectionBackgroundColor = UIColor.appColor(.gray1)
         searchMenuDropDown.direction = .bottom
         searchMenuDropDown.bottomOffset = CGPoint(x: 0, y:(searchMenuDropDown.anchorView?.plainView.bounds.height)! + 50)
 
         searchMenuDropDown.shadowColor = .white
         searchMenuDropDown.textFont = UIFont(name: "Pretendard-Regular", size: 14)!
-        searchMenuDropDown.textColor =  UIColor(red: 0.408, green: 0.408, blue: 0.408, alpha: 1)
-        searchMenuDropDown.selectedTextColor = UIColor(red: 0.408, green: 0.408, blue: 0.408, alpha: 1)
-        searchMenuDropDown.layer.borderWidth = 2
+        searchMenuDropDown.textColor =  UIColor.appColor(.gray4)
+        searchMenuDropDown.selectedTextColor = UIColor.appColor(.gray4)
+        searchMenuDropDown.layer.borderWidth = 1
         searchMenuDropDown.cornerRadius = 5
         searchMenuDropDown.cellHeight = 36
+        searchMenuDropDown.borderWidth = 1
+        searchMenuDropDown.borderColor = UIColor.appColor(.gray3).cgColor
         
         searchMenuDropDown.selectionAction = { index, item in
             print(item)
@@ -172,7 +162,7 @@ class MainVC: UIViewController, UICollectionViewDelegate {
             self.searchMenuDropDown.clearSelection()
         }
         
-        searchMenuDropDown.cancelAction = { [weak searchMenu] in
+        searchMenuDropDown.cancelAction = {
             self.isDropDown(isDrop: false)
             self.searchMenu.isSelected = false
             }
@@ -184,22 +174,21 @@ class MainVC: UIViewController, UICollectionViewDelegate {
         self.view.backgroundColor = .white
         
         [
-            dropBtn,
             memberView,
+            bookmarkBtn,
+            gearBtn,
             nameLabel,
             majorLabel,
             searchBar,
             searchMenu,
             searchMenuDropDown,
-            tableView,
-            dropView
+            tableView
         ].forEach {self.view.addSubview($0)}
-        setupConstraint()
         
     }
     
     private func setupConstraint() {
-        
+      
         
         memberView.snp.makeConstraints{ make in
             make.leading.equalToSuperview().offset(16)
@@ -207,6 +196,19 @@ class MainVC: UIViewController, UICollectionViewDelegate {
             make.top.equalToSuperview().offset(71)
             make.height.equalTo(99)
         }
+        
+        gearBtn.snp.makeConstraints{ make in
+            make.top.equalTo(memberView.snp.top).offset(16)
+            make.trailing.equalTo(memberView.snp.trailing).offset(-16)
+        }
+        
+        bookmarkBtn.snp.makeConstraints{ make in
+            make.top.equalTo(memberView.snp.top).offset(16)
+            make.trailing.equalTo(gearBtn.snp.leading).offset(-14)
+            
+        }
+        
+       
         nameLabel.snp.makeConstraints{ make in
             make.leading.equalTo(memberView.snp.leading).offset(14)
             make.top.equalTo(memberView.snp.top).offset(29)
@@ -234,17 +236,6 @@ class MainVC: UIViewController, UICollectionViewDelegate {
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-71)
         }
-        dropView.snp.makeConstraints { make in
-            make.top.equalTo(searchMenu.snp.bottom).offset(4)
-            make.leading.trailing.equalTo(searchMenu)
-            make.height.equalTo(115)
-            
-        }
-        dropBtn.snp.makeConstraints {make in
-            make.top.bottom.equalTo(searchMenu)
-            make.leading.trailing.equalTo(searchMenu).inset(1)
-        }
-        
         
     }
     
@@ -254,13 +245,17 @@ class MainVC: UIViewController, UICollectionViewDelegate {
 
 extension MainVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testArr.count
+        return 4
+    }
+    
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 84
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: mainTableViewCell.identifier, for: indexPath) as? UITableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: mainTableViewCell.identifier, for: indexPath) as? mainTableViewCell else { return UITableViewCell() }
         
-//        cell.textLabel?.text = testArr[indexPath.row]
         
         return cell
     }

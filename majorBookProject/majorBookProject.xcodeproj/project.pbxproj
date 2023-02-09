@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2FFE6012CA0F73D021C0756E /* Pods_majorBookProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407F70D45778683F856A5859 /* Pods_majorBookProject.framework */; };
+		506D0F689596CEA937685E4B /* Pods_majorBookProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9CCBD7DAFAD8004DF137025 /* Pods_majorBookProject.framework */; };
 		7E6FDB1B298FBC46006775B0 /* mainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1A298FBC46006775B0 /* mainTableViewCell.swift */; };
 		7E6FDB26298FC465006775B0 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1D298FC465006775B0 /* Pretendard-Regular.otf */; };
 		7E6FDB27298FC465006775B0 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1E298FC465006775B0 /* Pretendard-ExtraLight.otf */; };
@@ -22,6 +23,7 @@
 		7E6FDB3329901851006775B0 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6FDB3229901851006775B0 /* TextFieldExtension.swift */; };
 		7E6FDB352990189E006775B0 /* JoinDoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6FDB342990189E006775B0 /* JoinDoneVC.swift */; };
 		7E6FDB37299018C5006775B0 /* JoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6FDB36299018C5006775B0 /* JoinVC.swift */; };
+		7E76D9E42992649100A485EB /* colorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E76D9E32992649100A485EB /* colorSet.swift */; };
 		7EE17E01298D6610006CF871 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE17E00298D6610006CF871 /* AppDelegate.swift */; };
 		7EE17E03298D6610006CF871 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE17E02298D6610006CF871 /* SceneDelegate.swift */; };
 		7EE17E0A298D6611006CF871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EE17E09298D6611006CF871 /* Assets.xcassets */; };
@@ -49,6 +51,7 @@
 		7E6FDB3229901851006775B0 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 		7E6FDB342990189E006775B0 /* JoinDoneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinDoneVC.swift; sourceTree = "<group>"; };
 		7E6FDB36299018C5006775B0 /* JoinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinVC.swift; sourceTree = "<group>"; };
+		7E76D9E32992649100A485EB /* colorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colorSet.swift; sourceTree = "<group>"; };
 		7EE17DFD298D6610006CF871 /* majorBookProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = majorBookProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE17E00298D6610006CF871 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EE17E02298D6610006CF871 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +61,7 @@
 		7EE17E16298D6659006CF871 /* previewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = previewExtension.swift; sourceTree = "<group>"; };
 		7EE17E18298D666A006CF871 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		7EE17E1A298D667C006CF871 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		F9CCBD7DAFAD8004DF137025 /* Pods_majorBookProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_majorBookProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FFE6012CA0F73D021C0756E /* Pods_majorBookProject.framework in Frameworks */,
+				506D0F689596CEA937685E4B /* Pods_majorBookProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				7E6FDB1A298FBC46006775B0 /* mainTableViewCell.swift */,
+				7E76D9E32992649100A485EB /* colorSet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				407F70D45778683F856A5859 /* Pods_majorBookProject.framework */,
+				F9CCBD7DAFAD8004DF137025 /* Pods_majorBookProject.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -307,6 +314,7 @@
 				7EE17E1B298D667C006CF871 /* MainVC.swift in Sources */,
 				7EE17E03298D6610006CF871 /* SceneDelegate.swift in Sources */,
 				7E6FDB352990189E006775B0 /* JoinDoneVC.swift in Sources */,
+				7E76D9E42992649100A485EB /* colorSet.swift in Sources */,
 				7EE17E19298D666A006CF871 /* LoginVC.swift in Sources */,
 				7EE17E17298D6659006CF871 /* previewExtension.swift in Sources */,
 			);
