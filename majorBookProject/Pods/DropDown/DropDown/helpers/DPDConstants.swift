@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Kevin Hirsch. All rights reserved.
 //
 
+#if os(iOS)
+
 import UIKit
 
 internal struct DPDConstant {
@@ -33,6 +35,8 @@ internal struct DPDConstant {
 		static let CornerRadius: CGFloat = 2
 		static let RowHeight: CGFloat = 44
 		static let HeightPadding: CGFloat = 20
+        static let borderWidth: CGFloat = 1.0
+        static let borderColor = UIColor.clear.cgColor
 
 		struct Shadow {
 
@@ -55,3 +59,5 @@ internal struct DPDConstant {
 	}
 
 }
+
+#endif

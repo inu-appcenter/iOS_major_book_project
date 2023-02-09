@@ -3,45 +3,32 @@
 import UIKit
 import SwiftUI
 import SnapKit
+import Then
 
 
 class LoginVC: UIViewController {
     
     private let contentView = UIView()
     
-    private let stackView: UIStackView = {
-        let idSaving = UIButton()
-        idSaving.backgroundColor = .white
-        idSaving.setTitle("아이디저장", for: .normal)
-        idSaving.setTitleColor(.gray, for: .normal)
-        idSaving.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        
-        let autoLogin = UIButton()
-        autoLogin.backgroundColor = .white
-        autoLogin.setTitle("자동로그인", for: .normal)
-        autoLogin.setTitleColor(.gray, for: .normal)
-        autoLogin.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        
-        let notLogin = UIButton()
-         notLogin.backgroundColor = .white
-         notLogin.setTitle("비회원사용", for: .normal)
-         notLogin.setTitleColor(.gray, for: .normal)
-         notLogin.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        
-        let stackV = UIStackView(arrangedSubviews: [idSaving,autoLogin,notLogin])
-        
-        stackV.axis = .horizontal
-        stackV.alignment = .fill
-        stackV.distribution = .equalSpacing
-        stackV.spacing = 3
-        
-        return stackV
-    }()
+    lazy var searchingIdPw = UIButton().then {
+        $0.setTitle("아이디/비밀번호 찾기", for: .normal)
+        $0.setTitleColor(UIColor.appColor(.gray4), for: .normal)
+        $0.titleLabel?.font = UIFont(name: "Pretendard-Light", size: 12)
+    }
+    
+    lazy var autoLoginBtn = UIButton().then {
+        $0.setTitle("   자동 로그인", for: .normal)
+        $0.setTitleColor(UIColor.appColor(.gray4), for: .normal)
+        $0.titleLabel?.font = UIFont(name: "Pretendard-Light", size: 12)
+        $0.setImage(UIImage(named: "box"), for: .normal)
+        $0.setImage(UIImage(named: "checkBox"),for: .selected)
+        $0.addTarget(self, action: #selector (checkBoxButton(_:)), for: .touchUpInside)
+    }
     
     private let imageView: UIImageView = {
         let imageV =  UIImageView()
         imageV.backgroundColor = .white
-        imageV.image = UIImage(named: "insignia")
+        imageV.image = UIImage(named: "휘장 3")
         return imageV
     }()
     
@@ -85,10 +72,11 @@ class LoginVC: UIViewController {
     private func setupLayout() {
         self.view.addSubview(contentView)
         [
+            autoLoginBtn,
+            searchingIdPw,
             imageView,
             idField,
             pwField,
-            stackView,
             loginBtn,
         ].forEach {contentView.addSubview($0)}
         setupConstraint()
@@ -105,11 +93,6 @@ class LoginVC: UIViewController {
             
         }
         
-        stackView.snp.makeConstraints{ make in
-            make.leading.equalToSuperview().offset(47)
-            make.trailing.equalToSuperview().offset(-47)
-            make.bottom.equalTo(loginBtn.snp.top).offset(-95)
-        }
         
         imageView.snp.makeConstraints{make in
             make.centerX.equalToSuperview()
@@ -128,7 +111,8 @@ class LoginVC: UIViewController {
             make.height.equalTo(50)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalTo(stackView.snp.top).offset(-33)
+            make.bottom.equalTo(autoLoginBtn.snp.top).offset(-12)
+            
         }
         
         loginBtn.snp.makeConstraints{ make in
@@ -136,6 +120,20 @@ class LoginVC: UIViewController {
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-94)
             make.height.equalTo(50)
+        }
+        
+        autoLoginBtn.snp.makeConstraints {make in
+            make.leading.equalToSuperview().offset(16)
+            make.bottom.equalTo(loginBtn.snp.top).offset(-117)
+            
+        }
+        
+        searchingIdPw.snp.makeConstraints {make in
+            make.trailing.equalToSuperview().offset(-16)
+            make.centerY.equalTo(autoLoginBtn)
+            
+            
+            
         }
     }
     
@@ -145,6 +143,12 @@ class LoginVC: UIViewController {
         view.window?.rootViewController = mainViewController
         view.window?.rootViewController?.dismiss(animated: true)
     
+    }
+    
+    @objc func checkBoxButton(_ sender: UIButton) {
+        print("check")
+        sender.isSelected = !sender.isSelected
+        
     }
 }
     

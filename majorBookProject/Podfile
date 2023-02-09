@@ -5,7 +5,8 @@ target 'majorBookProject' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 pod 'SnapKit'
-pod 'DropDown'
+pod 'DropDown', :git => 'https://github.com/snappymob/DropDown.git', :commit => 
+  '57027168178b77a9463814fbeb6cda173f301854'
 pod 'Then'
   # Pods for majorBookProject
 

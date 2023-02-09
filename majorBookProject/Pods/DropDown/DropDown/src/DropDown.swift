@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Kevin Hirsch. All rights reserved.
 //
 
+#if os(iOS)
+
 import UIKit
 
 public typealias Index = Int
@@ -291,6 +293,26 @@ public final class DropDown: UIView {
 		didSet { reloadAllComponents() }
 	}
 
+    /// Border width for the dropDown
+    @objc public dynamic var borderWidth = DPDConstant.UI.borderWidth {
+        willSet {
+            tableViewContainer.layer.borderWidth = newValue
+        }
+        didSet {
+            reloadAllComponents()
+        }
+    }
+
+    /// Border color for the dropDown
+    @objc public dynamic var borderColor = DPDConstant.UI.borderColor {
+        willSet {
+            tableViewContainer.layer.borderColor = newValue
+        }
+        didSet {
+            reloadAllComponents()
+        }
+    }
+
 	/**
 	The duration of the show/hide animation.
 	*/
@@ -355,13 +377,22 @@ public final class DropDown: UIView {
      
      Changing the cell nib automatically reloads the drop down.
      */
-	public var cellNib = UINib(nibName: "DropDownCell", bundle: Bundle(for: DropDownCell.self)) {
+	public var cellNib = UINib(nibName: "DropDownCell", bundle: bundle) {
 		didSet {
 			tableView.register(cellNib, forCellReuseIdentifier: DPDConstant.ReusableIdentifier.DropDownCell)
 			templateCell = nil
 			reloadAllComponents()
 		}
 	}
+
+  /// Correctly specify Bundle for Swift Packages
+  fileprivate static var bundle: Bundle {
+    #if SWIFT_PACKAGE
+    return Bundle.module
+    #else
+    return Bundle(for: DropDownCell.self)
+    #endif
+  }
 	
 	//MARK: Content
 
@@ -535,6 +566,8 @@ private extension DropDown {
 		tableViewContainer.layer.shadowOffset = shadowOffset
 		tableViewContainer.layer.shadowOpacity = shadowOpacity
 		tableViewContainer.layer.shadowRadius = shadowRadius
+        tableViewContainer.layer.borderColor = borderColor
+        tableViewContainer.layer.borderWidth = borderWidth
 
 		tableView.backgroundColor = tableViewBackgroundColor
 		tableView.separatorColor = separatorColor
@@ -1194,3 +1227,5 @@ private extension DispatchQueue {
 		}
 	}
 }
+
+#endif
