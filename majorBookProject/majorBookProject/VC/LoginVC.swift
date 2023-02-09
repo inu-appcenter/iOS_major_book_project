@@ -8,6 +8,8 @@ import Then
 
 class LoginVC: UIViewController {
     
+    //MARK: - Component
+    
     private let contentView = UIView()
     
     lazy var searchingIdPw = UIButton().then {
@@ -49,17 +51,36 @@ class LoginVC: UIViewController {
         
     }()
     
-    lazy var loginBtn: UIButton = {
-        let loginbtn = UIButton()
-        loginbtn.backgroundColor = UIColor(named: "mainColor")
-        loginbtn.layer.cornerRadius = 5
-        loginbtn.setTitle("로그인", for: .normal)
-        loginbtn.setTitleColor(.white, for: .normal)
-        loginbtn.addTarget(self, action: #selector(pushLoginButton), for: .touchUpInside)
+    lazy var loginBtn = UIButton().then {
+        $0.backgroundColor = UIColor(named: "mainColor")
+        $0.layer.cornerRadius = 5
+        $0.setTitle("로그인", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.addTarget(self, action: #selector(pushLoginButton), for: .touchUpInside)
+    }
     
-        return loginbtn
-    }()
+    lazy var joinBtn = UIButton().then {
+        $0.backgroundColor = .white
+        $0.setTitle("학번으로 회원가입", for: .normal)
+        $0.titleLabel?.font = UIFont(name: "Pretend-Regular", size: 14)
+        $0.setTitleColor(UIColor.appColor(.gray4), for: .normal)
+        $0.layer.borderWidth = 1
+        $0.layer.cornerRadius = 5
+        $0.layer.borderColor = UIColor.appColor(.gray4).cgColor
+        $0.addTarget(self, action: #selector(pushJoinButton), for: .touchUpInside)
+    }
+    
+    lazy var notLoginBtn = UIButton().then {
+        $0.backgroundColor = .white
+        $0.setTitle("비회원 사용", for: .normal)
+        $0.titleLabel?.font = UIFont(name: "Pretend-Regular", size: 14)
+        $0.setTitleColor(UIColor.appColor(.gray4), for: .normal)
+        $0.layer.borderWidth = 1
+        $0.layer.cornerRadius = 5
+        $0.layer.borderColor = UIColor.appColor(.gray4).cgColor
+    }
 
+    //MARK: - ViewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +89,8 @@ class LoginVC: UIViewController {
 
         
     }
+    
+    //MARK: - Layout
     
     private func setupLayout() {
         self.view.addSubview(contentView)
@@ -78,11 +101,14 @@ class LoginVC: UIViewController {
             idField,
             pwField,
             loginBtn,
+            joinBtn,
+            notLoginBtn
         ].forEach {contentView.addSubview($0)}
         setupConstraint()
     }
     
     
+    //MARK: - Constraint
     
     private func setupConstraint() {
         
@@ -118,7 +144,7 @@ class LoginVC: UIViewController {
         loginBtn.snp.makeConstraints{ make in
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-94)
+            make.bottom.equalTo(joinBtn.snp.top).offset(-8)
             make.height.equalTo(50)
         }
         
@@ -131,10 +157,25 @@ class LoginVC: UIViewController {
         searchingIdPw.snp.makeConstraints {make in
             make.trailing.equalToSuperview().offset(-16)
             make.centerY.equalTo(autoLoginBtn)
-            
-            
+        }
+        
+        joinBtn.snp.makeConstraints { make in
+            make.leading.equalTo(loginBtn.snp.leading)
+            make.trailing.equalTo(loginBtn.snp.centerX).offset(-4)
+            make.bottom.equalToSuperview().offset(-40)
+            make.height.equalTo(46)
             
         }
+        
+        notLoginBtn.snp.makeConstraints { make in
+            make.leading.equalTo(loginBtn.snp.centerX).offset(4)
+            make.trailing.equalToSuperview().offset(-16)
+            make.bottom.equalTo(joinBtn)
+            make.height.equalTo(joinBtn)
+            
+        }
+        
+        
     }
     
     @objc func pushLoginButton(sender: UIButton!) {
@@ -149,6 +190,12 @@ class LoginVC: UIViewController {
         print("check")
         sender.isSelected = !sender.isSelected
         
+    }
+    
+    @objc func pushJoinButton(sender: UIButton!) {
+        print("학번으로 회원가입 버튼 Pushed")
+        let joinVC = JoinVC()
+        self.navigationController?.pushViewController(joinVC, animated: true)
     }
 }
     

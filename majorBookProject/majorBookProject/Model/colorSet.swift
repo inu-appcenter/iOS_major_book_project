@@ -20,15 +20,15 @@ extension UIColor {
     static func appColor(_ name: mainColorSet) -> UIColor {
         switch name {
         case .gray1:
-            return #colorLiteral(red: 0.9688159823, green: 0.9688159823, blue: 0.9688159823, alpha: 1)
+            return #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1) //#F5F5F5
         case .gray2:
-            return #colorLiteral(red: 0.8861967921, green: 0.8861967921, blue: 0.8861967921, alpha: 1)
+            return #colorLiteral(red: 0.8588235294, green: 0.8588235294, blue: 0.8588235294, alpha: 1) //#DBDBDB
         case .gray3:
-            return #colorLiteral(red: 0.7370622158, green: 0.7370622158, blue: 0.7370622158, alpha: 1)
+            return #colorLiteral(red: 0.6745098039, green: 0.6745098039, blue: 0.6745098039, alpha: 1) //#AEAEAE
         case .gray4:
-            return #colorLiteral(red: 0.4834214449, green: 0.4834213853, blue: 0.4834214449, alpha: 1)
+            return #colorLiteral(red: 0.4078431373, green: 0.4078431373, blue: 0.4078431373, alpha: 1) //#686868
         case .point:
-            return #colorLiteral(red: 0.4411054254, green: 0.47596246, blue: 0.9510416389, alpha: 1)
+            return #colorLiteral(red: 0.3647058824, green: 0.3725490196, blue: 0.937254902, alpha: 1) //#5D5FEF
         }
       }
     
