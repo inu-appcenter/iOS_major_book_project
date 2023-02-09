@@ -18,7 +18,7 @@ class MainVC: UIViewController, UICollectionViewDelegate {
     }
     
     lazy var memberView = UIView().then{
-        $0.backgroundColor = UIColor(named:"mainColor")
+        $0.backgroundColor = UIColor.appColor(.point)
         $0.layer.cornerRadius = 5
         
     }

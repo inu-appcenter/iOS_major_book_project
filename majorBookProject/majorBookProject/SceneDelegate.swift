@@ -9,9 +9,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        //건드릴때 말하기
         let window = UIWindow(windowScene: windowScene)
-        let rootVC = JoinVC()
-        window.rootViewController = rootVC // 자신의 시작 ViewController
+        let rootVC = LoginVC()
+        window.rootViewController = UINavigationController(rootViewController: rootVC)// 자신의 시작 ViewController
         window.makeKeyAndVisible()
         self.window = window
     }
