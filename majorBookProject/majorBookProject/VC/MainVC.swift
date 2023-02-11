@@ -17,6 +17,17 @@ class MainVC: UIViewController, UICollectionViewDelegate {
         
     }
     
+    lazy var searchBtn = UIButton().then {
+        $0.setTitle("내 학과의 전공책 검색하기 ", for: .normal)
+        $0.setTitleColor(UIColor.appColor(.gray4), for: .normal)
+        $0.setImage(UIImage(named: "right"), for: .normal)
+        $0.titleLabel?.font = UIFont(name: "Pretendard-Medium", size: 12)
+        $0.semanticContentAttribute = .forceRightToLeft
+        $0.backgroundColor = .white
+        $0.layer.cornerRadius = 13
+       
+    }
+    
     lazy var memberView = UIView().then{
         $0.backgroundColor = UIColor.appColor(.point)
         $0.layer.cornerRadius = 5
@@ -46,8 +57,8 @@ class MainVC: UIViewController, UICollectionViewDelegate {
         rightButton.setImage(UIImage(named: "icon"), for: .normal)
         
         $0.searchBarStyle = .minimal
-        $0.searchTextField.font = .systemFont(ofSize: 14)
-        
+        $0.searchTextField.font = UIFont(name: "Pretendard-Regular", size: 14)
+        $0.searchTextField.textColor = UIColor.appColor(.gray4)
     }
     
     let testArr = ["a","b","c","d"]
@@ -142,7 +153,7 @@ class MainVC: UIViewController, UICollectionViewDelegate {
         searchMenuDropDown.backgroundColor = .white
         searchMenuDropDown.selectionBackgroundColor = UIColor.appColor(.gray1)
         searchMenuDropDown.direction = .bottom
-        searchMenuDropDown.bottomOffset = CGPoint(x: 0, y:(searchMenuDropDown.anchorView?.plainView.bounds.height)! + 50)
+        searchMenuDropDown.bottomOffset = CGPoint(x: 0, y:(searchMenuDropDown.anchorView?.plainView.bounds.height)! + 40)
 
         searchMenuDropDown.shadowColor = .white
         searchMenuDropDown.textFont = UIFont(name: "Pretendard-Regular", size: 14)!
@@ -177,6 +188,7 @@ class MainVC: UIViewController, UICollectionViewDelegate {
             memberView,
             bookmarkBtn,
             gearBtn,
+            searchBtn,
             nameLabel,
             majorLabel,
             searchBar,
@@ -194,7 +206,7 @@ class MainVC: UIViewController, UICollectionViewDelegate {
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.top.equalToSuperview().offset(71)
-            make.height.equalTo(99)
+            make.height.equalTo(106)
         }
         
         gearBtn.snp.makeConstraints{ make in
@@ -208,10 +220,19 @@ class MainVC: UIViewController, UICollectionViewDelegate {
             
         }
         
+        searchBtn.snp.makeConstraints {make in
+            make.trailing.equalTo(gearBtn)
+            make.top.equalTo(gearBtn.snp.bottom).offset(30)
+            make.left.equalTo(memberView.snp.left).offset(185)
+            make.height.equalTo(24)
+            
+        }
+        
        
         nameLabel.snp.makeConstraints{ make in
             make.leading.equalTo(memberView.snp.leading).offset(14)
             make.top.equalTo(memberView.snp.top).offset(29)
+            
         }
         majorLabel.snp.makeConstraints{ make in
             make.leading.equalTo(nameLabel.snp.leading)
@@ -222,20 +243,23 @@ class MainVC: UIViewController, UICollectionViewDelegate {
             make.trailing.equalToSuperview().offset(-16)
             make.top.equalTo(memberView.snp.bottom).offset(20)
             make.leading.equalToSuperview().offset(112)
+          
         }
         
         searchMenu.snp.makeConstraints {make in
             make.leading.equalToSuperview().offset(16)
             make.centerY.equalTo(searchBar.snp.centerY)
             make.trailing.equalTo(searchBar.snp.leading).offset(-8)
+            make.height.equalTo(36)
         }
         
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom).offset(20)
+            make.top.equalTo(searchBar.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-71)
         }
+        
         
     }
     
@@ -258,6 +282,22 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch indexPath.row{
+        case 1:
+            let bookInfoVC = BookInfoVC()
+            self.navigationController?.pushViewController(bookInfoVC, animated: true)
+            let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+                backBarButtonItem.tintColor = .gray  // 색상 변경
+                self.navigationItem.backBarButtonItem = backBarButtonItem
+        default:
+            return
+        }
+        
+        
     }
     
 }
