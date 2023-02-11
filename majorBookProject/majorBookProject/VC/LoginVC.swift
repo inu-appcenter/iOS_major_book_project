@@ -52,7 +52,7 @@ class LoginVC: UIViewController {
     }()
     
     lazy var loginBtn = UIButton().then {
-        $0.backgroundColor = UIColor(named: "mainColor")
+        $0.backgroundColor = UIColor.appColor(.point)
         $0.layer.cornerRadius = 5
         $0.setTitle("로그인", for: .normal)
         $0.setTitleColor(.white, for: .normal)
