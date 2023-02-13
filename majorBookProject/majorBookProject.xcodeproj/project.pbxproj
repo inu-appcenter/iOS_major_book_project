@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		2FFE6012CA0F73D021C0756E /* Pods_majorBookProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407F70D45778683F856A5859 /* Pods_majorBookProject.framework */; };
 		506D0F689596CEA937685E4B /* Pods_majorBookProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9CCBD7DAFAD8004DF137025 /* Pods_majorBookProject.framework */; };
-		7E6FDB1B298FBC46006775B0 /* mainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1A298FBC46006775B0 /* mainTableViewCell.swift */; };
+		7E5ABB5E299A375800075740 /* PreferencesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5ABB5D299A375800075740 /* PreferencesVC.swift */; };
+		7E5ABB60299A3B8B00075740 /* preferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5ABB5F299A3B8B00075740 /* preferCell.swift */; };
+		7E6FDB1B298FBC46006775B0 /* mainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1A298FBC46006775B0 /* mainCell.swift */; };
 		7E6FDB26298FC465006775B0 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1D298FC465006775B0 /* Pretendard-Regular.otf */; };
 		7E6FDB27298FC465006775B0 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1E298FC465006775B0 /* Pretendard-ExtraLight.otf */; };
 		7E6FDB28298FC465006775B0 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1F298FC465006775B0 /* Pretendard-ExtraBold.otf */; };
@@ -38,7 +40,9 @@
 		2AA1E644AD4D6D9AAE12920F /* Pods-majorBookProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-majorBookProject.release.xcconfig"; path = "Target Support Files/Pods-majorBookProject/Pods-majorBookProject.release.xcconfig"; sourceTree = "<group>"; };
 		407F70D45778683F856A5859 /* Pods_majorBookProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_majorBookProject.framework; path = "../Debug-iphonesimulator/Pods_majorBookProject.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		437777A280964F6F9A48760F /* Pods-majorBookProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-majorBookProject.debug.xcconfig"; path = "Target Support Files/Pods-majorBookProject/Pods-majorBookProject.debug.xcconfig"; sourceTree = "<group>"; };
-		7E6FDB1A298FBC46006775B0 /* mainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainTableViewCell.swift; sourceTree = "<group>"; };
+		7E5ABB5D299A375800075740 /* PreferencesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesVC.swift; sourceTree = "<group>"; };
+		7E5ABB5F299A3B8B00075740 /* preferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = preferCell.swift; sourceTree = "<group>"; };
+		7E6FDB1A298FBC46006775B0 /* mainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainCell.swift; sourceTree = "<group>"; };
 		7E6FDB1D298FC465006775B0 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		7E6FDB1E298FC465006775B0 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
 		7E6FDB1F298FC465006775B0 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
@@ -91,8 +95,9 @@
 		7E60FCD0299177DB000FAFCA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7E6FDB1A298FBC46006775B0 /* mainTableViewCell.swift */,
+				7E6FDB1A298FBC46006775B0 /* mainCell.swift */,
 				7E76D9E32992649100A485EB /* colorSet.swift */,
+				7E5ABB5F299A3B8B00075740 /* preferCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 				7E6FDB342990189E006775B0 /* JoinDoneVC.swift */,
 				7E6FDB36299018C5006775B0 /* JoinVC.swift */,
 				7E76D9E529979EB100A485EB /* BookInfoVC.swift */,
+				7E5ABB5D299A375800075740 /* PreferencesVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -309,15 +315,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E6FDB1B298FBC46006775B0 /* mainTableViewCell.swift in Sources */,
+				7E6FDB1B298FBC46006775B0 /* mainCell.swift in Sources */,
 				7E6FDB3329901851006775B0 /* TextFieldExtension.swift in Sources */,
 				7E6FDB3129901836006775B0 /* TextFieldExtension++.swift in Sources */,
 				7EE17E01298D6610006CF871 /* AppDelegate.swift in Sources */,
 				7E6FDB37299018C5006775B0 /* JoinVC.swift in Sources */,
 				7EE17E1B298D667C006CF871 /* MainVC.swift in Sources */,
+				7E5ABB60299A3B8B00075740 /* preferCell.swift in Sources */,
 				7EE17E03298D6610006CF871 /* SceneDelegate.swift in Sources */,
 				7E6FDB352990189E006775B0 /* JoinDoneVC.swift in Sources */,
 				7E76D9E42992649100A485EB /* colorSet.swift in Sources */,
+				7E5ABB5E299A375800075740 /* PreferencesVC.swift in Sources */,
 				7EE17E19298D666A006CF871 /* LoginVC.swift in Sources */,
 				7EE17E17298D6659006CF871 /* previewExtension.swift in Sources */,
 				7E76D9E629979EB100A485EB /* BookInfoVC.swift in Sources */,

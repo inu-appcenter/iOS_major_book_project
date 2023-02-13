@@ -47,8 +47,15 @@ class BookInfoVC: UIViewController {
     }
     
     lazy var button1 = UIButton().then {
+        $0.setTitle("참고서적", for: .normal)
+        $0.titleLabel?.font = UIFont(name: "Pretendard-Regular", size: 12)
+        $0.setTitleColor(UIColor.appColor(.gray4), for: .normal)
         
-        
+    }
+    lazy var button2 = UIButton().then {
+        $0.setTitle("주교재", for: .normal)
+        $0.titleLabel?.font = UIFont(name: "Pretendard-Regular", size: 12)
+        $0.setTitleColor(UIColor.appColor(.gray4), for: .normal)
     }
     
     override func viewDidLoad() {
@@ -70,7 +77,9 @@ class BookInfoVC: UIViewController {
         nameLabel,
         bookNameLabel,
         majorLabel,
-        label1
+        label1,
+        button1,
+        button2
         ].forEach{self.view.addSubview($0)}
         
     }
@@ -103,14 +112,27 @@ class BookInfoVC: UIViewController {
         
         label1.snp.makeConstraints { make in
             make.leading.equalTo(infoView)
-            make.top.equalTo(infoView.snp.bottom).offset(24)
+            make.top.equalTo(infoView.snp.bottom).offset(30)
             
         }
+        
+        button1.snp.makeConstraints {make in
+            make.trailing.equalTo(infoView)
+            make.top.equalTo(infoView.snp.bottom).offset(26)
+        }
+        
+        button2.snp.makeConstraints { make in
+            make.trailing.equalTo(button1.snp.leading).offset(-8)
+            make.top.equalTo(infoView.snp.bottom).offset(26)
+            
+        }
+     
         
         
         
     }
 }
+
 
 
 

@@ -14,6 +14,7 @@ class MainVC: UIViewController, UICollectionViewDelegate {
     
     lazy var gearBtn = UIButton().then {
         $0.setImage(UIImage(named: "gear"), for: .normal)
+        $0.addTarget(self, action: #selector(didTapGear), for: .touchUpInside)
         
     }
     
@@ -123,6 +124,12 @@ class MainVC: UIViewController, UICollectionViewDelegate {
         searchMenuDropDown.show()
     }
     
+    @objc func didTapGear(_ sender: UIButton) {
+        print("pushed gearBtn")
+        let preferVC =  PreferencesVC()
+        self.navigationController?.pushViewController(preferVC, animated: true)
+        
+    }
     
     //MARK: - Func
     

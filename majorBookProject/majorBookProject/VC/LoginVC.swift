@@ -177,6 +177,7 @@ class LoginVC: UIViewController {
         
         
     }
+    //MARK: - objc
     
     @objc func pushLoginButton(sender: UIButton!) {
         print("버튼 selected")
