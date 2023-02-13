@@ -26,6 +26,7 @@ class PreferencesVC: UIViewController {
         return tV
     }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayouts()
@@ -37,6 +38,8 @@ class PreferencesVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+
     
     
     private func setupLayouts(){

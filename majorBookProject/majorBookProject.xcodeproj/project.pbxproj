@@ -11,6 +11,7 @@
 		506D0F689596CEA937685E4B /* Pods_majorBookProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9CCBD7DAFAD8004DF137025 /* Pods_majorBookProject.framework */; };
 		7E5ABB5E299A375800075740 /* PreferencesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5ABB5D299A375800075740 /* PreferencesVC.swift */; };
 		7E5ABB60299A3B8B00075740 /* preferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5ABB5F299A3B8B00075740 /* preferCell.swift */; };
+		7E5ABB62299A5A7C00075740 /* BookMarkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5ABB61299A5A7C00075740 /* BookMarkVC.swift */; };
 		7E6FDB1B298FBC46006775B0 /* mainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1A298FBC46006775B0 /* mainCell.swift */; };
 		7E6FDB26298FC465006775B0 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1D298FC465006775B0 /* Pretendard-Regular.otf */; };
 		7E6FDB27298FC465006775B0 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1E298FC465006775B0 /* Pretendard-ExtraLight.otf */; };
@@ -42,6 +43,7 @@
 		437777A280964F6F9A48760F /* Pods-majorBookProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-majorBookProject.debug.xcconfig"; path = "Target Support Files/Pods-majorBookProject/Pods-majorBookProject.debug.xcconfig"; sourceTree = "<group>"; };
 		7E5ABB5D299A375800075740 /* PreferencesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesVC.swift; sourceTree = "<group>"; };
 		7E5ABB5F299A3B8B00075740 /* preferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = preferCell.swift; sourceTree = "<group>"; };
+		7E5ABB61299A5A7C00075740 /* BookMarkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkVC.swift; sourceTree = "<group>"; };
 		7E6FDB1A298FBC46006775B0 /* mainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainCell.swift; sourceTree = "<group>"; };
 		7E6FDB1D298FC465006775B0 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		7E6FDB1E298FC465006775B0 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				7E6FDB36299018C5006775B0 /* JoinVC.swift */,
 				7E76D9E529979EB100A485EB /* BookInfoVC.swift */,
 				7E5ABB5D299A375800075740 /* PreferencesVC.swift */,
+				7E5ABB61299A5A7C00075740 /* BookMarkVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				7E6FDB1B298FBC46006775B0 /* mainCell.swift in Sources */,
 				7E6FDB3329901851006775B0 /* TextFieldExtension.swift in Sources */,
 				7E6FDB3129901836006775B0 /* TextFieldExtension++.swift in Sources */,
+				7E5ABB62299A5A7C00075740 /* BookMarkVC.swift in Sources */,
 				7EE17E01298D6610006CF871 /* AppDelegate.swift in Sources */,
 				7E6FDB37299018C5006775B0 /* JoinVC.swift in Sources */,
 				7EE17E1B298D667C006CF871 /* MainVC.swift in Sources */,

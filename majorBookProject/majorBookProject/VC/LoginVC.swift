@@ -182,7 +182,7 @@ class LoginVC: UIViewController {
     @objc func pushLoginButton(sender: UIButton!) {
         print("버튼 selected")
         let mainViewController = MainVC()
-        view.window?.rootViewController = mainViewController
+        view.window?.rootViewController = UINavigationController(rootViewController: mainViewController)
         view.window?.rootViewController?.dismiss(animated: true)
     
     }

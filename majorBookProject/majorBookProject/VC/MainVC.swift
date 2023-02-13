@@ -3,7 +3,7 @@ import Then
 import DropDown
 import UIKit
 
-class MainVC: UIViewController, UICollectionViewDelegate {
+class MainVC: UIViewController {
     
     
     //MARK: - Component
@@ -14,7 +14,7 @@ class MainVC: UIViewController, UICollectionViewDelegate {
     
     lazy var gearBtn = UIButton().then {
         $0.setImage(UIImage(named: "gear"), for: .normal)
-        $0.addTarget(self, action: #selector(didTapGear), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(didTapGear(_:)), for: .touchUpInside)
         
     }
     
@@ -62,7 +62,7 @@ class MainVC: UIViewController, UICollectionViewDelegate {
         $0.searchTextField.textColor = UIColor.appColor(.gray4)
     }
     
-    let testArr = ["a","b","c","d"]
+    
     private let tableView: UITableView = {
         let tV =  UITableView(frame: .zero, style: .plain)
         tV.layer.cornerRadius = 5
@@ -114,6 +114,7 @@ class MainVC: UIViewController, UICollectionViewDelegate {
         configureDropDown()
        
     }
+
     
     //MARK: - @objc
     
@@ -126,17 +127,29 @@ class MainVC: UIViewController, UICollectionViewDelegate {
     
     @objc func didTapGear(_ sender: UIButton) {
         print("pushed gearBtn")
+        navigationControl()
         let preferVC =  PreferencesVC()
         self.navigationController?.pushViewController(preferVC, animated: true)
+        
+        
         
     }
     
     //MARK: - Func
     
+    private func navigationControl() {
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
+            backBarButtonItem.tintColor = .black
+            self.navigationItem.backBarButtonItem = backBarButtonItem
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+      
+
+    }
+    
     private func attText(search:String) -> AttributedString {
         var attText = AttributedString.init(search)
         attText.font = UIFont(name: "Pretendard-Regular", size: 14)
-        attText.foregroundColor = UIColor(red: 0.408, green: 0.408, blue: 0.408, alpha: 1)
+        attText.foregroundColor = UIColor.appColor(.gray4)
         
         
         return attText
@@ -193,11 +206,11 @@ class MainVC: UIViewController, UICollectionViewDelegate {
         
         [
             memberView,
-            bookmarkBtn,
-            gearBtn,
             searchBtn,
             nameLabel,
             majorLabel,
+            bookmarkBtn,
+            gearBtn,
             searchBar,
             searchMenu,
             searchMenuDropDown,
