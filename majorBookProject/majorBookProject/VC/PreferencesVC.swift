@@ -13,6 +13,12 @@ class PreferencesVC: UIViewController {
     
     let preferList = ["개인정보관리","차단사용자관리","언어설정","오픈소스라이센스","개인정보 처리방침","버전정보 1.00 (128)","로그아웃"]
     
+    lazy var deleteBtn = UIButton().then {
+        $0.setTitle("계정삭제", for: .normal)
+        $0.setTitleColor(UIColor.appColor(.gray5), for: .normal)
+        $0.titleLabel?.font = UIFont(name: "Pretendard-light", size: 12)
+    }
+    
     private let tableView: UITableView = {
         let tV =  UITableView(frame: .zero, style: .plain)
         tV.layer.cornerRadius = 5
@@ -37,6 +43,7 @@ class PreferencesVC: UIViewController {
     private func attribute() {
         tableView.delegate = self
         tableView.dataSource = self
+        self.navigationItem.title = "환경설정"
     }
     
 
@@ -44,7 +51,8 @@ class PreferencesVC: UIViewController {
     
     private func setupLayouts(){
         [
-            tableView
+            tableView,
+            deleteBtn
         
         ].forEach({self.view.addSubview($0)})
         
@@ -54,6 +62,13 @@ class PreferencesVC: UIViewController {
         
         tableView.snp.makeConstraints{ make in
             make.top.leading.trailing.bottom.equalToSuperview()
+            
+            
+        }
+        
+        deleteBtn.snp.makeConstraints{ make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-36)
             
         }
         

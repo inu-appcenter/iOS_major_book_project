@@ -10,6 +10,8 @@ class MainVC: UIViewController {
     
     lazy var bookmarkBtn = UIButton().then {
         $0.setImage(UIImage(named: "bookmark_line"), for: .normal)
+        $0.addTarget(self, action: #selector(didTapBookMark(_:)), for: .touchUpInside)
+        
     }
     
     lazy var gearBtn = UIButton().then {
@@ -130,9 +132,13 @@ class MainVC: UIViewController {
         navigationControl()
         let preferVC =  PreferencesVC()
         self.navigationController?.pushViewController(preferVC, animated: true)
-        
-        
-        
+    }
+    
+    @objc func didTapBookMark(_ sender: UIButton) {
+        print("pushed bookmarkBtn")
+        navigationControl()
+        let bookmarkVC = BookMarkVC()
+        self.navigationController?.pushViewController(bookmarkVC, animated: true)
     }
     
     //MARK: - Func
@@ -142,6 +148,7 @@ class MainVC: UIViewController {
             backBarButtonItem.tintColor = .black
             self.navigationItem.backBarButtonItem = backBarButtonItem
         self.navigationItem.backBarButtonItem = backBarButtonItem
+       
       
 
     }
