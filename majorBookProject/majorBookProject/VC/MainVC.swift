@@ -5,6 +5,7 @@ import UIKit
 
 class MainVC: UIViewController {
     
+    static let book: [Book] = [Book(bookId: 123, subjectId: 202001490, memberId: 202001490, title: "가깝고 먼 이야기, 색:신비롭고 다채로운 예술", author: "한혜진", publisher: "미진사", year: 2021, type: "국내서 단행본", url: "www.google.com" , checked: 0)]
     
     //MARK: - Component
     
@@ -144,10 +145,10 @@ class MainVC: UIViewController {
     //MARK: - Func
     
     private func navigationControl() {
+        
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
             backBarButtonItem.tintColor = .black
             self.navigationItem.backBarButtonItem = backBarButtonItem
-        self.navigationItem.backBarButtonItem = backBarButtonItem
        
       
 
@@ -317,9 +318,7 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         case 1:
             let bookInfoVC = BookInfoVC()
             self.navigationController?.pushViewController(bookInfoVC, animated: true)
-            let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-                backBarButtonItem.tintColor = .gray  // 색상 변경
-                self.navigationItem.backBarButtonItem = backBarButtonItem
+            navigationControl()
         default:
             return
         }

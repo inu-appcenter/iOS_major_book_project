@@ -58,6 +58,17 @@ class BookInfoVC: UIViewController {
         $0.setTitleColor(UIColor.appColor(.gray4), for: .normal)
     }
     
+    lazy var bookView = UIView().then {
+        $0.backgroundColor = .white
+        $0.layer.cornerRadius = 5
+        $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
+        $0.layer.shadowOffset = CGSize(width: 0, height: 2)
+        $0.layer.shadowOpacity = 1
+        $0.layer.shadowRadius = 4
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationControl()
@@ -79,7 +90,8 @@ class BookInfoVC: UIViewController {
         majorLabel,
         label1,
         button1,
-        button2
+        button2,
+        bookView
         ].forEach{self.view.addSubview($0)}
         
     }
@@ -90,7 +102,7 @@ class BookInfoVC: UIViewController {
         infoView.snp.makeConstraints{ make in
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.top.equalToSuperview().offset(68)
+            make.top.equalTo(self.view.safeAreaLayoutGuide).offset(8)
             make.height.equalTo(92)
         }
         
@@ -125,6 +137,13 @@ class BookInfoVC: UIViewController {
             make.trailing.equalTo(button1.snp.leading).offset(-8)
             make.top.equalTo(infoView.snp.bottom).offset(26)
             
+        }
+        
+        bookView.snp.makeConstraints {make in
+            make.leading.equalTo(label1)
+            make.trailing.equalTo(button1)
+            make.top.equalTo(label1.snp.bottom).offset(12)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
      
         

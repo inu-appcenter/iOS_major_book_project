@@ -48,7 +48,7 @@ class PreferencesVC: UIViewController {
     
 
     
-    
+ 
     private func setupLayouts(){
         [
             tableView,

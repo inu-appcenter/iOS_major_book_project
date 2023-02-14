@@ -18,8 +18,9 @@ class bookmarkCell: UITableViewCell {
     let title = UILabel()
     let author =  UILabel()
     lazy var bookmarkBtn = UIButton().then {
-//        $0.setImage(UIImage(named:"bookmark_line_big"), for: .normal)
+        $0.setImage(UIImage(named:"bookmark_line_big"), for: .selected)
         $0.setImage(UIImage(named:"bookmark_line_bigcheck"),for: .normal)
+        $0.addTarget(self, action: #selector(didTapbookmarkBtn), for: .touchUpInside)
     }
     
     
@@ -33,6 +34,12 @@ class bookmarkCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("")
     }
+    
+    @objc func didTapbookmarkBtn() {
+        bookmarkBtn.isSelected = !bookmarkBtn.isSelected
+        print("tap btn")
+    }
+    
     
     private func setupLayouts(){
         [title,author,bookmarkBtn].forEach({self.addSubview($0)})

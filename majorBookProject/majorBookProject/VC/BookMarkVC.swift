@@ -15,6 +15,8 @@ class BookMarkVC: UIViewController {
     
     private let tableView: UITableView = {
         let tV =  UITableView(frame: .zero, style: .plain)
+        tV.contentInset = .zero
+        tV.contentInsetAdjustmentBehavior = .never
         tV.layer.cornerRadius = 5
         tV.layer.borderColor = UIColor.appColor(.gray3).cgColor
         tV.layer.borderWidth = 0.5
@@ -37,7 +39,7 @@ class BookMarkVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         self.navigationItem.title = "저장한 교재"
-        self.navigationController?.navigationBar.barTintColor = .white
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
     }
     
@@ -50,7 +52,7 @@ class BookMarkVC: UIViewController {
         tableView.snp.makeConstraints{
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().offset(-16)
-            $0.top.equalTo(self.view)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(4)
             $0.bottom.equalToSuperview().offset(-10)
         }
     }

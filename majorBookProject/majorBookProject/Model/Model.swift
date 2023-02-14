@@ -17,14 +17,17 @@ struct Member {
 }
 
 struct Book {
-    let bookId: Int
-    let subjectId: Int
-    let memberId: Int
-    let title: String //책 제목
-    let author: String //저자 이름
-    let publisher: String // 출판사
-    let year: Int // 발행년도
-    let type: String // 교재분류
-    let url: String // 도서정보 url
+    var bookId: Int
+    var subjectId: Int
+    var memberId: Int
+    var title: String //책 제목
+    var author: String //저자 이름
+    var publisher: String // 출판사
+    var year: Int // 발행년도
+    var type: String // 교재분류
+    var url: String // 도서정보 url
     var checked: Int // 저장횟수
+    
 }
+
+
