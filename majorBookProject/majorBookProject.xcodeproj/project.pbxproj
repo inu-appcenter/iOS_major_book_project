@@ -12,6 +12,8 @@
 		7E5ABB5E299A375800075740 /* PreferencesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5ABB5D299A375800075740 /* PreferencesVC.swift */; };
 		7E5ABB60299A3B8B00075740 /* preferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5ABB5F299A3B8B00075740 /* preferCell.swift */; };
 		7E5ABB62299A5A7C00075740 /* BookMarkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5ABB61299A5A7C00075740 /* BookMarkVC.swift */; };
+		7E5ABB64299B801100075740 /* bookmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5ABB63299B801100075740 /* bookmarkCell.swift */; };
+		7E5ABB67299B814700075740 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5ABB66299B814700075740 /* Model.swift */; };
 		7E6FDB1B298FBC46006775B0 /* mainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1A298FBC46006775B0 /* mainCell.swift */; };
 		7E6FDB26298FC465006775B0 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1D298FC465006775B0 /* Pretendard-Regular.otf */; };
 		7E6FDB27298FC465006775B0 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7E6FDB1E298FC465006775B0 /* Pretendard-ExtraLight.otf */; };
@@ -44,6 +46,8 @@
 		7E5ABB5D299A375800075740 /* PreferencesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesVC.swift; sourceTree = "<group>"; };
 		7E5ABB5F299A3B8B00075740 /* preferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = preferCell.swift; sourceTree = "<group>"; };
 		7E5ABB61299A5A7C00075740 /* BookMarkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkVC.swift; sourceTree = "<group>"; };
+		7E5ABB63299B801100075740 /* bookmarkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookmarkCell.swift; sourceTree = "<group>"; };
+		7E5ABB66299B814700075740 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		7E6FDB1A298FBC46006775B0 /* mainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainCell.swift; sourceTree = "<group>"; };
 		7E6FDB1D298FC465006775B0 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		7E6FDB1E298FC465006775B0 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
@@ -94,14 +98,23 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		7E60FCD0299177DB000FAFCA /* Model */ = {
+		7E5ABB65299B813300075740 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7E5ABB66299B814700075740 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7E60FCD0299177DB000FAFCA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				7E6FDB1A298FBC46006775B0 /* mainCell.swift */,
 				7E76D9E32992649100A485EB /* colorSet.swift */,
 				7E5ABB5F299A3B8B00075740 /* preferCell.swift */,
+				7E5ABB63299B801100075740 /* bookmarkCell.swift */,
 			);
-			path = Model;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		7E6FDB1C298FC3F8006775B0 /* Fonts */ = {
@@ -150,7 +163,8 @@
 		7EE17DFF298D6610006CF871 /* majorBookProject */ = {
 			isa = PBXGroup;
 			children = (
-				7E60FCD0299177DB000FAFCA /* Model */,
+				7E5ABB65299B813300075740 /* Model */,
+				7E60FCD0299177DB000FAFCA /* Cell */,
 				7E6FDB2F29901819006775B0 /* j_Extension */,
 				7E6FDB1C298FC3F8006775B0 /* Fonts */,
 				7EE17E15298D664A006CF871 /* Extension */,
@@ -321,6 +335,7 @@
 				7E6FDB1B298FBC46006775B0 /* mainCell.swift in Sources */,
 				7E6FDB3329901851006775B0 /* TextFieldExtension.swift in Sources */,
 				7E6FDB3129901836006775B0 /* TextFieldExtension++.swift in Sources */,
+				7E5ABB64299B801100075740 /* bookmarkCell.swift in Sources */,
 				7E5ABB62299A5A7C00075740 /* BookMarkVC.swift in Sources */,
 				7EE17E01298D6610006CF871 /* AppDelegate.swift in Sources */,
 				7E6FDB37299018C5006775B0 /* JoinVC.swift in Sources */,
@@ -329,6 +344,7 @@
 				7EE17E03298D6610006CF871 /* SceneDelegate.swift in Sources */,
 				7E6FDB352990189E006775B0 /* JoinDoneVC.swift in Sources */,
 				7E76D9E42992649100A485EB /* colorSet.swift in Sources */,
+				7E5ABB67299B814700075740 /* Model.swift in Sources */,
 				7E5ABB5E299A375800075740 /* PreferencesVC.swift in Sources */,
 				7EE17E19298D666A006CF871 /* LoginVC.swift in Sources */,
 				7EE17E17298D6659006CF871 /* previewExtension.swift in Sources */,
