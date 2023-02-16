@@ -67,13 +67,167 @@ class BookInfoVC: UIViewController {
         $0.layer.shadowRadius = 4
     }
     
+    lazy var author = UILabel().then {
+        $0.text = "저자"
+        $0.textColor = .appColor(.gray4)
+        $0.font = UIFont(name: "Pretendard-Regular", size: 14)
+    }
     
+    lazy var publisher = UILabel().then {
+        $0.text = "출판사"
+        $0.textColor = .appColor(.gray4)
+        $0.font = UIFont(name: "Pretendard-Regular", size: 14)
+    }
+    
+    lazy var year = UILabel().then {
+        $0.text = "발행년도"
+        $0.textColor = .appColor(.gray4)
+        $0.font = UIFont(name: "Pretendard-Regular", size: 14)
+    }
+    
+    lazy var type = UILabel().then {
+        $0.text = "자료유형"
+        $0.textColor = .appColor(.gray4)
+        $0.font = UIFont(name: "Pretendard-Regular", size: 14)
+    }
+    
+    lazy var url = UILabel().then {
+        $0.text = "소장정보"
+        $0.textColor = .appColor(.gray4)
+        $0.font = UIFont(name: "Pretendard-Regular", size: 14)
+    }
+    
+    
+    
+    
+    lazy var sV3 : UIStackView = {
+        let sV = UIStackView()
+        sV.axis = .horizontal
+        sV.distribution = .fill
+        sV.spacing = 5
+
+        
+        let content = UILabel()
+        content.text = "한혜진"
+        content.font = UIFont(name: "Pretendard-Regular", size: 14)
+
+        [author,content].forEach({sV.addArrangedSubview($0)})
+        
+        return sV
+    }()
+    
+    lazy var sV4 : UIStackView = {
+        let sV = UIStackView()
+        sV.axis = .horizontal
+        sV.distribution = .fill
+        sV.spacing = 5
+
+        
+        let content = UILabel()
+        content.text = "미진사"
+        content.font = UIFont(name: "Pretendard-Regular", size: 14)
+        
+        [publisher,content].forEach({sV.addArrangedSubview($0)})
+        
+        return sV
+    }()
+    
+    lazy var sV5 : UIStackView = {
+        let sV = UIStackView()
+        sV.axis = .horizontal
+        sV.distribution = .fill
+        sV.spacing = 5
+
+       
+        
+        let content = UILabel()
+        content.text = "2021"
+        content.font = UIFont(name: "Pretendard-Regular", size: 14)
+
+        [year,content].forEach({sV.addArrangedSubview($0)})
+        
+        return sV
+    }()
+    
+    lazy var sV6 : UIStackView = {
+        let sV = UIStackView()
+        sV.axis = .horizontal
+        sV.distribution = .fill
+        sV.spacing = 5
+       
+        
+        let content = UILabel()
+        content.text = "국내서 단행본"
+        content.font = UIFont(name: "Pretendard-Regular", size: 14)
+        
+        [type,content].forEach({sV.addArrangedSubview($0)})
+        
+        return sV
+    }()
+    
+    lazy var sV7 : UIStackView = {
+        let sV = UIStackView()
+        sV.axis = .horizontal
+        sV.distribution = .fill
+        sV.spacing = 5
+
+        
+        let content = UILabel()
+        content.text = "학산도서관 바로가기"
+        content.font = UIFont(name: "Pretendard-Regular", size: 14)
+
+        [url,content].forEach({sV.addArrangedSubview($0)})
+        
+        return sV
+    }()
+    
+    lazy var line1 = createLine()
+    lazy var line2 = createLine()
+    lazy var line3 = createLine()
+    lazy var line4 = createLine()
+    lazy var line5 = createLine()
+    lazy var line6 = createLine()
+
+    lazy var labell = UILabel().then {
+        $0.text = " "
+    }
+    lazy var stackView : UIStackView = {
+
+        let sV = UIStackView()
+        sV.axis = .vertical
+    
+        sV.spacing = 10
+       
+
+        [line1,sV3,line2,sV4,line3,sV5,line4,sV6,line5,sV7,line6,labell].forEach({sV.addArrangedSubview($0)})
+
+        return sV
+    }()
+    
+    lazy var bookImage = UIImageView().then {
+        $0.image = UIImage(named: "book2")
+    }
+    
+    lazy var bookTitle = UILabel().then {
+        $0.text = "가깝고 먼 이야기, 책:다채롭고 신비한 예술"
+        $0.font = UIFont(name: "Pretendard-Medium", size: 14)
+    }
+    
+    lazy var bookmarkBtn = UIButton().then {
+        $0.setImage(UIImage(named: "bookmark_line-1"), for: .normal)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationControl()
         setupLayouts()
         setupConstraints()
+    }
+    
+    private func createLine() -> UIView {
+        let view = UIView()
+        view.backgroundColor = UIColor.appColor(.gray3)
+        return view
     }
     
     
@@ -83,6 +237,9 @@ class BookInfoVC: UIViewController {
     }
     
     private func setupLayouts() {
+        
+        [stackView,bookImage,bookTitle,bookmarkBtn].forEach{bookView.addSubview($0)}
+        
         [
         infoView,
         nameLabel,
@@ -91,7 +248,7 @@ class BookInfoVC: UIViewController {
         label1,
         button1,
         button2,
-        bookView
+        bookView,
         ].forEach{self.view.addSubview($0)}
         
     }
@@ -124,7 +281,9 @@ class BookInfoVC: UIViewController {
         
         label1.snp.makeConstraints { make in
             make.leading.equalTo(infoView)
-            make.top.equalTo(infoView.snp.bottom).offset(30)
+            make.top.equalTo(infoView.snp.bottom).offset(24)
+            make.height.equalTo(14)
+            
             
         }
         
@@ -143,11 +302,51 @@ class BookInfoVC: UIViewController {
             make.leading.equalTo(label1)
             make.trailing.equalTo(button1)
             make.top.equalTo(label1.snp.bottom).offset(12)
-            make.bottom.equalTo(self.view.safeAreaLayoutGuide)
+            make.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-40)
+            
         }
-     
         
+        stackView.snp.makeConstraints {make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview().inset(10)
+            
+            
+        }
         
+        bookImage.snp.makeConstraints {make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(stackView.snp.top).offset(-22)
+            make.top.equalTo(bookTitle.snp.bottom).offset(30)
+        }
+        
+        bookTitle.snp.makeConstraints {make in
+            make.leading.equalToSuperview().offset(20)
+            make.top.equalToSuperview().offset(20)
+            
+        }
+        
+        bookmarkBtn.snp.makeConstraints {make in
+            make.trailing.equalToSuperview().offset(-16)
+            make.top.equalToSuperview().offset(16)
+            
+        }
+        
+        [line1,line2,line3,line4,line5,line6].forEach {
+            $0.snp.makeConstraints {
+                
+                $0.height.equalTo(0.33)
+            }
+        }
+        
+        labell.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        labell.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        
+        [author,publisher,year,type,url].forEach {
+            $0.snp.makeConstraints {
+                $0.width.equalTo(63)
+            }
+            
+        }
         
     }
 }
