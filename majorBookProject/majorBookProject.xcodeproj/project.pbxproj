@@ -101,6 +101,7 @@
 		7E5ABB65299B813300075740 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7E76D9E32992649100A485EB /* colorSet.swift */,
 				7E5ABB66299B814700075740 /* Model.swift */,
 			);
 			path = Model;
@@ -110,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				7E6FDB1A298FBC46006775B0 /* mainCell.swift */,
-				7E76D9E32992649100A485EB /* colorSet.swift */,
 				7E5ABB5F299A3B8B00075740 /* preferCell.swift */,
 				7E5ABB63299B801100075740 /* bookmarkCell.swift */,
 			);
