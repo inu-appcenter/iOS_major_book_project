@@ -11,6 +11,7 @@ import Then
 
 class BookMarkVC: UIViewController {
     
+    var answerFilterDatasource =  ExpandingTableViewCellContent() //tableView delegate
     var book = ["책제목","책제목","책제목","책제목"]
     
     private let tableView: UITableView = {
@@ -24,7 +25,6 @@ class BookMarkVC: UIViewController {
         tV.register(bookmarkCell.self, forCellReuseIdentifier: bookmarkCell.identifier)
         tV.separatorColor = UIColor.appColor(.gray3)
         tV.separatorInset.left = 0
-        tV.rowHeight = 84
         return tV
     }()
     
@@ -38,6 +38,7 @@ class BookMarkVC: UIViewController {
     private func attribute() {
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.rowHeight = UITableView.automaticDimension
         self.navigationItem.title = "저장한 교재"
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
@@ -57,21 +58,19 @@ class BookMarkVC: UIViewController {
         }
     }
     
-    private func setupCell(cell: bookmarkCell) -> UITableViewCell {
-        cell.title.text = "책 제목"
-        cell.title.textColor = .black
-        cell.title.font = UIFont(name: "Pretendard-Medium", size: 14)
-        cell.author.text = "저자"
-        cell.author.textColor = UIColor.appColor(.gray4)
-        cell.author.font = UIFont(name: "Pretendard-Regular", size: 12)
-        
-        return cell
-    }
-    
 }
 
 
 extension BookMarkVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            
+            
+            let content = answerFilterDatasource
+            
+            content.expanded = !content.expanded
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
@@ -83,12 +82,9 @@ extension BookMarkVC: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: bookmarkCell.identifier, for: indexPath) as! bookmarkCell
         
-    
-        return setupCell(cell: cell)
-
+        cell.settingCell(isClicked: answerFilterDatasource)
+        return cell
     }
-    
-    
 }
 
 
