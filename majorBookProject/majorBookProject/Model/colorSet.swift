@@ -15,6 +15,7 @@ enum mainColorSet {
     case gray4
     case gray5
     case point
+    case iris
 }
 
 extension UIColor {
@@ -32,6 +33,8 @@ extension UIColor {
             return #colorLiteral(red: 0.3647058824, green: 0.3725490196, blue: 0.937254902, alpha: 1) //#5D5FEF
         case .gray5:
             return #colorLiteral(red: 0.4988793731, green: 0.4988793731, blue: 0.4988793731, alpha: 1)
+        case .iris:
+            return #colorLiteral(red: 0.5451391339, green: 0.567764163, blue: 0.9572134614, alpha: 1)
         }
       }
     

@@ -3,61 +3,50 @@ import Then
 import DropDown
 import UIKit
 
-class MainVC: UIViewController {
+class NotLoginVC: UIViewController {
     
-    var isFiltering: Bool = false
+
     
     //MARK: - Component
     
-    lazy var bookmarkBtn = UIButton().then {
-        $0.setImage(UIImage(named: "bookmark_line"), for: .normal)
-        $0.addTarget(self, action: #selector(didTapBookMark(_:)), for: .touchUpInside)
-        
-    }
-    
-    lazy var gearBtn = UIButton().then {
-        $0.setImage(UIImage(named: "gear"), for: .normal)
-        $0.addTarget(self, action: #selector(didTapGear(_:)), for: .touchUpInside)
-        
-    }
+    var selected: String = "과목명"
+    var searchText: String = "SearchBar Text"
     
     lazy var searchBtn = UIButton().then {
-        $0.setTitle("내 학과의 전공책 검색하기 ", for: .normal)
+        $0.setTitle("로그인하고 더 많은 기능 사용하기", for: .normal)
         $0.setTitleColor(UIColor.appColor(.gray4), for: .normal)
         $0.setImage(UIImage(named: "right"), for: .normal)
         $0.titleLabel?.font = UIFont(name: "Pretendard-Medium", size: 12)
         $0.semanticContentAttribute = .forceRightToLeft
         $0.backgroundColor = .white
         $0.layer.cornerRadius = 13
-       
+        $0.addTarget(self, action: #selector(didTapLoginButton(_:)), for: .touchUpInside)
     }
     
     lazy var memberView = UIView().then{
-        $0.backgroundColor = UIColor.appColor(.point)
+        $0.backgroundColor = UIColor.appColor(.iris)
         $0.layer.cornerRadius = 5
-        
     }
     
     
     lazy var nameLabel = UILabel().then{
         
-        var paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = 0.83
-        $0.attributedText = NSMutableAttributedString(string: "김가온", attributes: [NSAttributedString.Key.kern: -0.4, NSAttributedString.Key.paragraphStyle: paragraphStyle])
-
-        $0.font = UIFont(name: "Pretendard-SemiBold", size: 20)
+        $0.text = "전공책 정보?\n00에서 찾아보자"
+        $0.numberOfLines = 2
+        $0.font = UIFont(name: "Pretendard-Bold", size: 20)
         $0.textColor = .white
     }
     
     lazy var majorLabel = UILabel().then{
-        $0.text = "정보기술대학 컴퓨터공학부"
+        $0.text = "내가 듣는 수업의 전공책 정보를 쉽고 빠르게"
         $0.font = UIFont(name: "Pretendard-Medium", size: 14)
         $0.textColor = .white
     }
     
     lazy var searchBar = UISearchBar().then{
         $0.placeholder = "검색어를 입력하세요"
-        $0.setImage(UIImage(named: "search"), for: UISearchBar.Icon.search, state: .normal)
+        let rightButton = UIButton()
+        rightButton.setImage(UIImage(named: "icon"), for: .normal)
         
         $0.searchBarStyle = .minimal
         $0.searchTextField.font = UIFont(name: "Pretendard-Regular", size: 14)
@@ -76,8 +65,8 @@ class MainVC: UIViewController {
         tV.separatorColor = UIColor.appColor(.gray3)
         tV.separatorInset.left = 0
         return tV
+        
     }()
-    
     
     
     let searchMenuDropDown = DropDown()
@@ -110,9 +99,7 @@ class MainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableViewInit()
-        searchBarInit()
-        
+        attribute()
         setupLayout()
         setupConstraint()
         configureDropDown()
@@ -143,15 +130,17 @@ class MainVC: UIViewController {
         self.navigationController?.pushViewController(bookmarkVC, animated: true)
     }
     
+    @objc func didTapLoginButton(_ sender: UIButton) {
+        let LoginVC = LoginVC()
+        view.window?.rootViewController = UINavigationController(rootViewController: LoginVC)
+        view.window?.rootViewController?.dismiss(animated: true)
+    }
     //MARK: - Func
     
-    private func tableViewInit() {
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-    
-    private func searchBarInit() {
+    private func attribute(){
         searchBar.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     private func navigationControl() {
@@ -159,9 +148,6 @@ class MainVC: UIViewController {
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
             backBarButtonItem.tintColor = .black
             self.navigationItem.backBarButtonItem = backBarButtonItem
-       
-      
-
     }
     
     private func attText(search:String) -> AttributedString {
@@ -172,7 +158,6 @@ class MainVC: UIViewController {
         
         return attText
     }
-    
     
     private func isDropDown(isDrop: Bool) {
         
@@ -205,11 +190,13 @@ class MainVC: UIViewController {
         searchMenuDropDown.borderColor = UIColor.appColor(.gray3).cgColor
         
         searchMenuDropDown.selectionAction = { index, item in
-            print(item)
+            
+            self.selected = item
             self.searchMenu.configuration?.attributedTitle = self.attText(search: item)
             self.isDropDown(isDrop: false)
             
             self.searchMenuDropDown.clearSelection()
+            print(self.selected)
         }
         
         searchMenuDropDown.cancelAction = {
@@ -217,6 +204,20 @@ class MainVC: UIViewController {
             self.searchMenu.isSelected = false
             }
     }
+    
+    private func initRequestModel(item: String, text: String) -> postSubject {
+        switch (item){
+        case "학과명":
+            return postSubject(department: text, name: "", professor: "")
+        case "과목명":
+            return postSubject(department: "", name: text, professor: "")
+        case "교수명":
+            return postSubject(department: "", name: "", professor: text)
+        default:
+            return postSubject(department: "", name: text, professor: "")
+        }
+    } 
+    
     
     //MARK: - Layout
     
@@ -228,8 +229,6 @@ class MainVC: UIViewController {
             searchBtn,
             nameLabel,
             majorLabel,
-            bookmarkBtn,
-            gearBtn,
             searchBar,
             searchMenu,
             searchMenuDropDown,
@@ -245,34 +244,27 @@ class MainVC: UIViewController {
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.top.equalToSuperview().offset(71)
-            make.height.equalTo(106)
-        }
-        
-        gearBtn.snp.makeConstraints{ make in
-            make.top.equalTo(memberView.snp.top).offset(16)
-            make.trailing.equalTo(memberView.snp.trailing).offset(-16)
-        }
-        
-        bookmarkBtn.snp.makeConstraints{ make in
-            make.top.equalTo(memberView.snp.top).offset(16)
-            make.trailing.equalTo(gearBtn.snp.leading).offset(-14)
+            make.height.equalTo(160)
             
         }
         
         searchBtn.snp.makeConstraints {make in
-            make.trailing.equalTo(gearBtn)
-            make.top.equalTo(gearBtn.snp.bottom).offset(30)
-            make.left.equalTo(memberView.snp.left).offset(185)
+            make.trailing.equalTo(memberView.snp.trailing).offset(-16)
+            make.bottom.equalTo(memberView.snp.bottom).offset(-18)
             make.height.equalTo(24)
+            make.width.equalTo(182)
             
         }
         
        
         nameLabel.snp.makeConstraints{ make in
-            make.leading.equalTo(memberView.snp.leading).offset(14)
-            make.top.equalTo(memberView.snp.top).offset(29)
+            make.leading.equalTo(memberView.snp.leading).offset(16)
+            make.top.equalTo(memberView.snp.top).offset(24)
+            make.height.equalTo(48)
+     
             
         }
+        
         majorLabel.snp.makeConstraints{ make in
             make.leading.equalTo(nameLabel.snp.leading)
             make.top.equalTo(nameLabel.snp.bottom).offset(7)
@@ -296,7 +288,7 @@ class MainVC: UIViewController {
             make.top.equalTo(searchBar.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-71)
+            make.bottom.equalToSuperview().offset(-91)
         }
         
         
@@ -306,18 +298,26 @@ class MainVC: UIViewController {
     
 }
 
-extension MainVC: UISearchBarDelegate {
+extension NotLoginVC: UISearchBarDelegate {
     
     // 서치바 키보드 내리기
     private func dismissKeyboard() {
+        print("키보드 내려감")
         searchBar.resignFirstResponder()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         dismissKeyboard()
-        guard let searchText = searchBar.text,
-              searchText.isEmpty == false else {return}
+        searchText = searchBar.text ?? ""
+        
+        let model = initRequestModel(item: selected, text: searchText)
+        //여기서 모델 만들어서 밑에서 보내주
+        
+        requestPost(data: model) {
+            print(model)
+        }
+        
         print(searchText)
     }
         
@@ -325,14 +325,14 @@ extension MainVC: UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         self.tableView.reloadData()
     }
-    
-    
 
-    
     
 }
 
-extension MainVC: UITableViewDataSource, UITableViewDelegate {
+
+
+
+extension NotLoginVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
@@ -352,12 +352,10 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch indexPath.row{
-        case 1:
+        default:
             let bookInfoVC = BookInfoVC()
             self.navigationController?.pushViewController(bookInfoVC, animated: true)
             navigationControl()
-        default:
-            return
         }
         
         
@@ -369,12 +367,11 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
 
 
 
-
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
-struct MainViewControllerPreView: PreviewProvider {
+struct NotLoginViewControllerPreView: PreviewProvider {
   static var previews: some View {
-    MainVC().toPreview()
+    NotLoginVC().toPreview()
   }
 }
     #endif

@@ -1,15 +1,24 @@
 PODS:
+  - Alamofire (5.6.3)
   - DropDown (2.3.13)
+  - ExpandableCell (1.3.1)
+  - ExpyTableView (1.2.1)
   - SnapKit (5.6.0)
   - Then (3.0.0)
 
 DEPENDENCIES:
+  - Alamofire
   - DropDown (from `https://github.com/snappymob/DropDown.git`, commit `57027168178b77a9463814fbeb6cda173f301854`)
+  - ExpandableCell
+  - ExpyTableView
   - SnapKit
   - Then
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - ExpandableCell
+    - ExpyTableView
     - SnapKit
     - Then
 
@@ -24,10 +33,13 @@ CHECKOUT OPTIONS:
     :git: https://github.com/snappymob/DropDown.git
 
 SPEC CHECKSUMS:
+  Alamofire: 8b7a946e9db6f76e93eaa0d4c84e3751633959c9
   DropDown: bf260fd688978138019ad7d94f63a2362dad85ba
+  ExpandableCell: c57c3057395df3066ec33d239b59623825f1f716
+  ExpyTableView: 19cf224c2ff04b1ec215ec52bc4ba6f81fa809ed
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 9f10ef21606889a5c3f4b24d6bc8e75e3995585d
+PODFILE CHECKSUM: 4738835efba05191f139b1214789b0fb290a6a3b
 
 COCOAPODS: 1.11.3

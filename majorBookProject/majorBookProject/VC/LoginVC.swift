@@ -78,6 +78,7 @@ class LoginVC: UIViewController {
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 5
         $0.layer.borderColor = UIColor.appColor(.gray4).cgColor
+        $0.addTarget(self, action: #selector(pushNotLoginButton), for: .touchUpInside)
     }
 
     //MARK: - ViewDidLoad
@@ -193,10 +194,19 @@ class LoginVC: UIViewController {
         
     }
     
-    @objc func pushJoinButton(sender: UIButton!) {
+    @objc func pushJoinButton(sender: UIButton) {
         print("학번으로 회원가입 버튼 Pushed")
         let joinVC = JoinVC()
         self.navigationController?.pushViewController(joinVC, animated: true)
+    }
+    
+    @objc func pushNotLoginButton(sender: UIButton) {
+        print("비회원으로 사용하기 pushed")
+        let notLoginVC = NotLoginVC()
+        view.window?.rootViewController = UINavigationController(rootViewController: notLoginVC)
+        view.window?.rootViewController?.dismiss(animated: true)
+    
+        
     }
 }
     
