@@ -9,25 +9,44 @@ import Foundation
 import SwiftUI
 
 
-struct Member {
+struct Book {
+    let author: String
+    let id: Int
+    let isSaved: Bool
+    let publisher: String
+    let title: String
+    let type:String
+    let year: Int
+}
+
+struct SubjectResponse {
     let memberId: Int
     let name: String
     let major: String
     let bookList: [Book]
 }
 
-struct Book {
-    var bookId: Int
-    var subjectId: Int
-    var memberId: Int
-    var title: String //책 제목
-    var author: String //저자 이름
-    var publisher: String // 출판사
-    var year: Int // 발행년도
-    var type: String // 교재분류
-    var url: String // 도서정보 url
-    var checked: Int // 저장횟수
-    
+struct Welcome: Codable {
+    let books, department: String
+    let id: Int
+    let name, professor, subjectType: String
+}
+
+struct Subject: Codable {
+    let department: String
+    let id: Int
+    let name, professor, subjectType: String
+}
+
+struct postSubject: Codable { // 이건 데이터 보낼때 모델(body?)
+    let department: String
+    let name: String
+    let professor: String
+}
+
+struct searchModel: Codable {
+    let dropBtn: String
+    let searchText: String
 }
 
 

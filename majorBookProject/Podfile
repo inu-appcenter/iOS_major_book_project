@@ -8,6 +8,9 @@ pod 'SnapKit'
 pod 'DropDown', :git => 'https://github.com/snappymob/DropDown.git', :commit => 
   '57027168178b77a9463814fbeb6cda173f301854'
 pod 'Then'
-  # Pods for majorBookProject
+pod 'ExpandableCell'
+pod 'ExpyTableView'
+pod 'Alamofire'  
+# Pods for majorBookProject
 
 end
