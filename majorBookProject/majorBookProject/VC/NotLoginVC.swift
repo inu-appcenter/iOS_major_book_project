@@ -3,14 +3,19 @@ import Then
 import DropDown
 import UIKit
 
+protocol SendDataDelegate {
+    func recieveData(response : Book) -> Void
+}
+
 class NotLoginVC: UIViewController {
     
-
+    var delegate: SendDataDelegate?
     
     //MARK: - Component
     
-    var selected: String = "과목명"
+    var selected: String = "교수명"
     var searchText: String = "SearchBar Text"
+    var searchingdata = [Subject]()
     
     lazy var searchBtn = UIButton().then {
         $0.setTitle("로그인하고 더 많은 기능 사용하기", for: .normal)
@@ -53,7 +58,13 @@ class NotLoginVC: UIViewController {
         $0.searchTextField.textColor = UIColor.appColor(.gray4)
         
     }
-    
+    lazy var noSearchingData = UILabel().then{
+        $0.text = "검색결과가 없습니다."
+        $0.textColor = .appColor(.gray4)
+        $0.font = UIFont(name: "Pretendard-Regular", size: 14)
+        $0.isHidden = true
+        
+    }
     
     private let tableView: UITableView = {
         let tV =  UITableView(frame: .zero, style: .plain)
@@ -61,9 +72,10 @@ class NotLoginVC: UIViewController {
         tV.layer.borderColor = UIColor.appColor(.gray3).cgColor
         tV.layer.borderWidth = 1
         tV.backgroundColor = .white
-        tV.register(mainTableViewCell.self, forCellReuseIdentifier: mainTableViewCell.identifier)
+        tV.register(mainCell.self, forCellReuseIdentifier: mainCell.identifier)
         tV.separatorColor = UIColor.appColor(.gray3)
         tV.separatorInset.left = 0
+        tV.rowHeight = 84
         return tV
         
     }()
@@ -103,6 +115,7 @@ class NotLoginVC: UIViewController {
         setupLayout()
         setupConstraint()
         configureDropDown()
+        initialSearching()
        
     }
 
@@ -172,7 +185,7 @@ class NotLoginVC: UIViewController {
     
     private func configureDropDown() {
 
-        searchMenuDropDown.dataSource = ["교수명","학과명","과목명"]
+        searchMenuDropDown.dataSource = ["교수명","과목명","학과명"]
         searchMenuDropDown.anchorView = self.searchMenu
         searchMenuDropDown.backgroundColor = .white
         searchMenuDropDown.selectionBackgroundColor = UIColor.appColor(.gray1)
@@ -214,10 +227,34 @@ class NotLoginVC: UIViewController {
         case "교수명":
             return postSubject(department: "", name: "", professor: text)
         default:
-            return postSubject(department: "", name: text, professor: "")
+            return postSubject(department: "", name: "", professor: text)
         }
-    } 
+    }
     
+   
+    private func uploadNoSearchingData(){
+        self.tableView.isHidden = true
+        self.noSearchingData.isHidden = false
+    }
+    
+    
+    private func initialSearching(){
+        let model = initRequestModel(item: selected, text: "")
+        //여기서 모델 만들어서 밑에서 보내주
+        
+        requestGet(data: model) { data in
+            self.searchingdata = data
+            if self.searchingdata.isEmpty {
+                self.uploadNoSearchingData()
+            }
+            else {
+                self.noSearchingData.isHidden = true
+                self.tableView.isHidden = false
+            }
+            self.tableView.reloadData()
+            
+        }
+    }
     
     //MARK: - Layout
     
@@ -232,7 +269,8 @@ class NotLoginVC: UIViewController {
             searchBar,
             searchMenu,
             searchMenuDropDown,
-            tableView
+            tableView,
+            noSearchingData
         ].forEach {self.view.addSubview($0)}
         
     }
@@ -284,12 +322,18 @@ class NotLoginVC: UIViewController {
             make.height.equalTo(36)
         }
         
+        noSearchingData.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(125)
+            $0.top.equalTo(searchBar.snp.bottom).offset(131)
+        }
+        
         tableView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom).offset(16)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalToSuperview().offset(-91)
         }
+        
         
         
     }
@@ -314,8 +358,20 @@ extension NotLoginVC: UISearchBarDelegate {
         let model = initRequestModel(item: selected, text: searchText)
         //여기서 모델 만들어서 밑에서 보내주
         
-        requestPost(data: model) {
-            print(model)
+        requestGet(data: model) { data in
+            self.searchingdata = data
+            print("searching result: ", self.searchingdata)
+            
+            if self.searchingdata.isEmpty {
+                self.uploadNoSearchingData()
+            }
+            else {
+                self.noSearchingData.isHidden = true
+                self.tableView.isHidden = false
+            }
+
+            self.tableView.reloadData()
+            
         }
         
         print(searchText)
@@ -334,18 +390,14 @@ extension NotLoginVC: UISearchBarDelegate {
 
 extension NotLoginVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
-    }
-    
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 84
+        print("searchingdata count : ",searchingdata.count)
+        return searchingdata.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: mainTableViewCell.identifier, for: indexPath) as? mainTableViewCell else { return UITableViewCell() }
+        let cell = tableView.dequeueReusableCell(withIdentifier: mainCell.identifier, for: indexPath) as! mainCell
         
-        
+        cell.SettingCell(data: searchingdata[indexPath.row])
         return cell
     }
     
@@ -353,7 +405,15 @@ extension NotLoginVC: UITableViewDataSource, UITableViewDelegate {
         
         switch indexPath.row{
         default:
+            requestGetBook(id: searchingdata[indexPath.row].id) {
+                data in
+                
+                let model = Book(author: data.author ?? "", id: data.id, isSaved: data.isSaved, publisher: data.publisher ?? "", title: data.title ?? "" , type: data.type ?? "", year: data.year)
+                
+                self.delegate?.recieveData(response: model)
+            }
             let bookInfoVC = BookInfoVC()
+            self.delegate = bookInfoVC
             self.navigationController?.pushViewController(bookInfoVC, animated: true)
             navigationControl()
         }

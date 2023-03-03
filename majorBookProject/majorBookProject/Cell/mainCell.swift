@@ -9,16 +9,10 @@ import SnapKit
 import UIKit
 import Foundation
 
-class mainTableViewCell: UITableViewCell {
+class mainCell: UITableViewCell {
     
     
     static let identifier = "TableViewCell"
-
-//        private let containerView: UIView = {
-//            let containerView = UIView()
-//            containerView.backgroundColor = .white
-//            return containerView
-//        }()
 
         override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
             super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -31,61 +25,53 @@ class mainTableViewCell: UITableViewCell {
             fatalError("")
         }
     
+    lazy var subjectName = UILabel().then {
+        $0.textColor = .black
+        $0.font = UIFont(name: "Pretendard-Regular", size: 14)
+    }
+
+    lazy var professorName = UILabel().then {
+        $0.textColor = .gray
+        $0.font = UIFont(name: "Pretendard-Regular", size: 12)
+    }
+
+
+    lazy var major = UILabel().then {
+        $0.font = UIFont(name: "Pretendard-Regular", size: 12)
+        $0.textColor = .gray
+    }
     
     
-    private let stackView: UIStackView = {
-        let subjectName = UILabel()
-        subjectName.text = "UNIX 디자인"
-        subjectName.textColor = .black
-        subjectName.font = UIFont(name: "Pretendard-Regular", size: 14)
-
-        let professorName = UILabel()
-        professorName.text = "이운형"
-        professorName.textColor = .gray
-        professorName.font = UIFont(name: "Pretendard-Regular", size: 12)
-
-        let major = UILabel()
-        major.text = "전공선택" + "/ 디자인학부"
-        major.font = UIFont(name: "Pretendard-Regular", size: 12)
-        major.textColor = .gray
-
-        let stackV = UIStackView(arrangedSubviews: [subjectName,professorName,major])
-
-        stackV.axis = .vertical
-        stackV.alignment = .fill
-        stackV.distribution = .equalSpacing
-        stackV.spacing = 3
-
-       return stackV
-    }()
+    func SettingCell(data: Subject) {
+        subjectName.text = data.name
+        professorName.text = data.professor
+        major.text = data.department
+    }
     
     
     private func setupLayouts() {
-        
-//        [
-//
-//            stackView
-//        ].forEach{self.contentView.addSubview($0)}
-        self.contentView.addSubview(stackView)
-    }
-    private func setupConstraints() {
-        
-//        self.containerView.snp.makeConstraints{ make in
-//            make.edges.equalToSuperview()
-////            make.height.equalTo(84)
-//        }
-        
-        
-        
-        stackView.snp.makeConstraints{ make in
-            make.top.equalToSuperview().offset(16)
-            make.bottom.equalToSuperview().offset(-16)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            
-        }
+        [subjectName,professorName,major].forEach{self.contentView.addSubview($0)}
+
     }
     
+    private func setupConstraints() {
+        subjectName.snp.makeConstraints {
+            $0.leading.top.equalToSuperview().inset(16)
+        }
+        professorName.snp.makeConstraints{
+            $0.leading.equalTo(subjectName)
+            $0.top.equalTo(subjectName.snp.bottom).offset(4)
+        }
+        major.snp.makeConstraints{
+            $0.leading.equalTo(subjectName)
+            $0.top.equalTo(professorName.snp.bottom).offset(10)
+        }
+        
+        
+        
+        
+        
+    }
 }
 
 
