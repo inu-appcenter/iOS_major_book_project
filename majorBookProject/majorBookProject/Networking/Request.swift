@@ -9,10 +9,18 @@ import Foundation
 import UIKit
 import Alamofire
     
-func requestPost(data:postSubject, completion: @escaping ()->Void) {
+func requestGet(data:postSubject, completion: @escaping ([Subject])->Void) {
     
-    Service.getSubjects(data:data){
-        completion()
+    Service.getSubjects(data:data){ data in
+        completion(data)
+    }
+    
+    
+}
+
+func requestGetBook(id: Int, completion: @escaping (Book)->Void ) {
+    Service.getBooks(id: id) { data in
+        completion(data)
     }
 }
     

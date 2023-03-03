@@ -9,14 +9,15 @@ import Foundation
 import SwiftUI
 
 
-struct Book {
-    let author: String
-    let id: Int
-    let isSaved: Bool
-    let publisher: String
-    let title: String
-    let type:String
-    let year: Int
+struct Book: Codable {
+    var author: String?
+    var id: Int
+    var isSaved: Bool
+    var publisher: String?
+    var title: String?
+    var type:String?
+    var year: Int?
+    
 }
 
 struct SubjectResponse {

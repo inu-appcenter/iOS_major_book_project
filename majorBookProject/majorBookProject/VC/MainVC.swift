@@ -72,9 +72,10 @@ class MainVC: UIViewController {
         tV.layer.borderColor = UIColor.appColor(.gray3).cgColor
         tV.layer.borderWidth = 1
         tV.backgroundColor = .white
-        tV.register(mainTableViewCell.self, forCellReuseIdentifier: mainTableViewCell.identifier)
+        tV.register(mainCell.self, forCellReuseIdentifier: mainCell.identifier)
         tV.separatorColor = UIColor.appColor(.gray3)
         tV.separatorInset.left = 0
+        tV.rowHeight = 84
         return tV
     }()
     
@@ -337,13 +338,8 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         return 4
     }
     
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 84
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: mainTableViewCell.identifier, for: indexPath) as? mainTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: mainCell.identifier, for: indexPath) as? mainCell else { return UITableViewCell() }
         
         
         return cell

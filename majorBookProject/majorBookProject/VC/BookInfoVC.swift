@@ -10,8 +10,15 @@ import Then
 import SnapKit
 import SwiftUI
 
-class BookInfoVC: UIViewController {
-    
+class BookInfoVC: UIViewController,SendDataDelegate {
+    func recieveData(response: Book) {
+        print("전달")
+        print(response)
+        nameLabel.text = response.author
+        bookNameLabel.text = response.title
+        bookTitle.text = response.title
+    }
+
     
     lazy var infoView = UIView().then {
         $0.backgroundColor = .white
@@ -21,14 +28,14 @@ class BookInfoVC: UIViewController {
     }
     
     lazy var nameLabel = UILabel().then {
-        $0.text = "한혜진"
+        $0.text = ""
         $0.textColor = UIColor.appColor(.gray4)
         $0.font = UIFont(name: "Pretendard-Medium", size: 12)
 
     }
     
     lazy var bookNameLabel = UILabel().then {
-        $0.text = "융합디자인론"
+        $0.text = ""
         $0.textColor = .black
         $0.font = UIFont(name: "Pretendard-SemiBold", size: 16)
     }
@@ -108,7 +115,7 @@ class BookInfoVC: UIViewController {
 
         
         let content = UILabel()
-        content.text = "한혜진"
+        content.text = "" //author
         content.font = UIFont(name: "Pretendard-Regular", size: 14)
 
         [author,content].forEach({sV.addArrangedSubview($0)})
@@ -124,7 +131,7 @@ class BookInfoVC: UIViewController {
 
         
         let content = UILabel()
-        content.text = "미진사"
+        content.text = "" //publisher
         content.font = UIFont(name: "Pretendard-Regular", size: 14)
         
         [publisher,content].forEach({sV.addArrangedSubview($0)})
@@ -141,7 +148,7 @@ class BookInfoVC: UIViewController {
        
         
         let content = UILabel()
-        content.text = "2021"
+        content.text = "" //year
         content.font = UIFont(name: "Pretendard-Regular", size: 14)
 
         [year,content].forEach({sV.addArrangedSubview($0)})
@@ -157,7 +164,7 @@ class BookInfoVC: UIViewController {
        
         
         let content = UILabel()
-        content.text = "국내서 단행본"
+        content.text = "" //type
         content.font = UIFont(name: "Pretendard-Regular", size: 14)
         
         [type,content].forEach({sV.addArrangedSubview($0)})
@@ -209,7 +216,7 @@ class BookInfoVC: UIViewController {
     }
     
     lazy var bookTitle = UILabel().then {
-        $0.text = "가깝고 먼 이야기, 책:다채롭고 신비한 예술"
+        $0.text = ""//title
         $0.font = UIFont(name: "Pretendard-Medium", size: 14)
     }
     
@@ -224,6 +231,10 @@ class BookInfoVC: UIViewController {
         setupConstraints()
     }
     
+//    private func createLabel(){
+//        nameLabel.text =
+//    }
+    
     private func createLine() -> UIView {
         let view = UIView()
         view.backgroundColor = UIColor.appColor(.gray3)
@@ -233,7 +244,7 @@ class BookInfoVC: UIViewController {
     
     private func navigationControl() {
         self.view.backgroundColor = .white
-        self.navigationItem.title = "융합디자인론/한혜진"
+        self.navigationItem.title = ""//title
     }
     
     private func setupLayouts() {
