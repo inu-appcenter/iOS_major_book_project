@@ -4,7 +4,7 @@ import DropDown
 import UIKit
 
 protocol SendDataDelegate {
-    func recieveData(response : Book) -> Void
+    func recieveData(response : Book, department: String) -> Void
 }
 
 class NotLoginVC: UIViewController {
@@ -405,17 +405,21 @@ extension NotLoginVC: UITableViewDataSource, UITableViewDelegate {
         
         switch indexPath.row{
         default:
+            var departmentType = String(searchingdata[indexPath.row].subjectType + " " + searchingdata[indexPath.row].department)
+            
             requestGetBook(id: searchingdata[indexPath.row].id) {
                 data in
                 
+                let bookInfoVC = BookInfoVC()
+                self.delegate = bookInfoVC
+                self.navigationController?.pushViewController(bookInfoVC, animated: true)
+                self.navigationControl()
+                
                 let model = Book(author: data.author ?? "", id: data.id, isSaved: data.isSaved, publisher: data.publisher ?? "", title: data.title ?? "" , type: data.type ?? "", year: data.year)
                 
-                self.delegate?.recieveData(response: model)
+                self.delegate?.recieveData(response: model,department: departmentType)
             }
-            let bookInfoVC = BookInfoVC()
-            self.delegate = bookInfoVC
-            self.navigationController?.pushViewController(bookInfoVC, animated: true)
-            navigationControl()
+            
         }
         
         

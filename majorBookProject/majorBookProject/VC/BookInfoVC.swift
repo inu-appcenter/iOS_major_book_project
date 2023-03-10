@@ -10,16 +10,36 @@ import Then
 import SnapKit
 import SwiftUI
 
+var model = Book(id: 0, isSaved: false)
+
 class BookInfoVC: UIViewController,SendDataDelegate {
-    func recieveData(response: Book) {
+    
+    
+    //MARK: Delegate func
+    
+    func recieveData(response: Book, department: String){
         print("전달")
-        print(response)
-        nameLabel.text = response.author
-        bookNameLabel.text = response.title
-        bookTitle.text = response.title
+        majorLabel.text = department
+        model.publisher = response.publisher!
+        model.year = response.year
+        model.id = response.id
+        model.type = response.type
+        model.author = response.author
+        model.title = response.title
+        nameLabel.text = response.author ?? ""
+        bookNameLabel.text = response.title ?? ""
+        bookTitle.text = response.title ?? ""
+    }
+    
+    //MARK: ViewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationControl()
+        setupLayouts()
+        setupConstraints()
     }
 
-    
+    //MARK: Component
     lazy var infoView = UIView().then {
         $0.backgroundColor = .white
         $0.layer.borderColor = UIColor.appColor(.point).cgColor
@@ -104,8 +124,7 @@ class BookInfoVC: UIViewController,SendDataDelegate {
         $0.font = UIFont(name: "Pretendard-Regular", size: 14)
     }
     
-    
-    
+    //MARK: StackViews
     
     lazy var sV3 : UIStackView = {
         let sV = UIStackView()
@@ -115,7 +134,7 @@ class BookInfoVC: UIViewController,SendDataDelegate {
 
         
         let content = UILabel()
-        content.text = "" //author
+        content.text = model.author //author
         content.font = UIFont(name: "Pretendard-Regular", size: 14)
 
         [author,content].forEach({sV.addArrangedSubview($0)})
@@ -131,7 +150,7 @@ class BookInfoVC: UIViewController,SendDataDelegate {
 
         
         let content = UILabel()
-        content.text = "" //publisher
+        content.text = model.publisher //publisher
         content.font = UIFont(name: "Pretendard-Regular", size: 14)
         
         [publisher,content].forEach({sV.addArrangedSubview($0)})
@@ -148,7 +167,7 @@ class BookInfoVC: UIViewController,SendDataDelegate {
        
         
         let content = UILabel()
-        content.text = "" //year
+        content.text = String(model.year ?? 1)  //year
         content.font = UIFont(name: "Pretendard-Regular", size: 14)
 
         [year,content].forEach({sV.addArrangedSubview($0)})
@@ -164,7 +183,7 @@ class BookInfoVC: UIViewController,SendDataDelegate {
        
         
         let content = UILabel()
-        content.text = "" //type
+        content.text = model.type ?? "" //type
         content.font = UIFont(name: "Pretendard-Regular", size: 14)
         
         [type,content].forEach({sV.addArrangedSubview($0)})
@@ -216,24 +235,13 @@ class BookInfoVC: UIViewController,SendDataDelegate {
     }
     
     lazy var bookTitle = UILabel().then {
-        $0.text = ""//title
+        $0.text = model.title ?? "" //title
         $0.font = UIFont(name: "Pretendard-Medium", size: 14)
     }
     
-    lazy var bookmarkBtn = UIButton().then {
-        $0.setImage(UIImage(named: "bookmark_line-1"), for: .normal)
-    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationControl()
-        setupLayouts()
-        setupConstraints()
-    }
     
-//    private func createLabel(){
-//        nameLabel.text =
-//    }
+    
     
     private func createLine() -> UIView {
         let view = UIView()
@@ -244,12 +252,14 @@ class BookInfoVC: UIViewController,SendDataDelegate {
     
     private func navigationControl() {
         self.view.backgroundColor = .white
-        self.navigationItem.title = ""//title
+        self.navigationItem.title = model.title ?? "title"//title
     }
     
+    
+    //MARK: setupLayouts
     private func setupLayouts() {
         
-        [stackView,bookImage,bookTitle,bookmarkBtn].forEach{bookView.addSubview($0)}
+        [stackView,bookImage,bookTitle].forEach{bookView.addSubview($0)}
         
         [
         infoView,
@@ -264,7 +274,7 @@ class BookInfoVC: UIViewController,SendDataDelegate {
         
     }
     
-    
+    //MARK: setupConstraints
     private func setupConstraints() {
         
         infoView.snp.makeConstraints{ make in
@@ -280,6 +290,7 @@ class BookInfoVC: UIViewController,SendDataDelegate {
         }
         
         bookNameLabel.snp.makeConstraints{ make in
+            make.trailing.equalToSuperview().offset(-16)
             make.leading.equalTo(nameLabel)
             make.top.equalTo(nameLabel.snp.bottom).offset(4)
             
@@ -331,16 +342,13 @@ class BookInfoVC: UIViewController,SendDataDelegate {
         }
         
         bookTitle.snp.makeConstraints {make in
+            make.trailing.equalToSuperview().offset(-16)
             make.leading.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(20)
             
         }
         
-        bookmarkBtn.snp.makeConstraints {make in
-            make.trailing.equalToSuperview().offset(-16)
-            make.top.equalToSuperview().offset(16)
-            
-        }
+        
         
         [line1,line2,line3,line4,line5,line6].forEach {
             $0.snp.makeConstraints {
