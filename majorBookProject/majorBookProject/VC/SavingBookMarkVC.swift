@@ -101,11 +101,10 @@ extension SavingBookMarkVC: ExpyTableViewDelegate, ExpyTableViewDataSource{
 //        cell?.selectionStyle = .none
         
         if section == 0 {
-            cell.settingCell(isClicked: false)
-            cell.bookTitle.text = "title1"
+            
         }
         else{
-            cell.settingCell(isClicked: true)
+            
         }
         
         return cell
@@ -113,21 +112,18 @@ extension SavingBookMarkVC: ExpyTableViewDelegate, ExpyTableViewDataSource{
     
     //row갯수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return arraySection0.count
-        } else {
-            return arraySection1.count
-        }
+        return 4
     }
     
     //row 내용
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-                
+        let cell = tableView.dequeueReusableCell(withIdentifier: expandableCell.identifier, for: indexPath) as! expandableCell
+        
         if indexPath.section == 0 {
-            cell.textLabel?.text = arraySection0[indexPath.row]
+            print("indexPath.section == 0")
         } else {
-            cell.textLabel?.text = arraySection1[indexPath.row]
+            print("indexPath.section != 0")
+            cell.textLabel?.text = "section-0"
         }
         
         return cell
@@ -135,7 +131,7 @@ extension SavingBookMarkVC: ExpyTableViewDelegate, ExpyTableViewDataSource{
     
     //section 갯수 설정
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     //셀을 선택했을 경우 이벤트 설정
