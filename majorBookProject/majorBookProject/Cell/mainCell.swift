@@ -43,9 +43,9 @@ class mainCell: UITableViewCell {
     
     
     func SettingCell(data: Subject) {
-        subjectName.text = data.name
-        professorName.text = data.professor
-        major.text = data.department
+        subjectName.text = data.subjectName
+        professorName.text = data.professorName
+        major.text = data.departmentName
     }
     
     

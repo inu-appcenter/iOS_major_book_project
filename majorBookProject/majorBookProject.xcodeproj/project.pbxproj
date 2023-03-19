@@ -42,6 +42,7 @@
 		7EE17E17298D6659006CF871 /* previewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE17E16298D6659006CF871 /* previewExtension.swift */; };
 		7EE17E19298D666A006CF871 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE17E18298D666A006CF871 /* LoginVC.swift */; };
 		7EE17E1B298D667C006CF871 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE17E1A298D667C006CF871 /* MainVC.swift */; };
+		7EE6133129C5C5C400C79DB6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6133029C5C5C400C79DB6 /* Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		7EE17E16298D6659006CF871 /* previewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = previewExtension.swift; sourceTree = "<group>"; };
 		7EE17E18298D666A006CF871 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		7EE17E1A298D667C006CF871 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		7EE6133029C5C5C400C79DB6 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		F9CCBD7DAFAD8004DF137025 /* Pods_majorBookProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_majorBookProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -211,6 +213,7 @@
 				7E5ABB61299A5A7C00075740 /* BookMarkVC.swift */,
 				7E5D93CE29A22DFD00A17127 /* SavingBookMarkVC.swift */,
 				7E02D5AB29A8B9B400BEBF21 /* NotLoginVC.swift */,
+				7EE6133029C5C5C400C79DB6 /* Alert.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				7E6FDB1B298FBC46006775B0 /* mainCell.swift in Sources */,
 				7E02D5AE29A8DCB000BEBF21 /* Request.swift in Sources */,
 				7E6FDB3329901851006775B0 /* TextFieldExtension.swift in Sources */,
+				7EE6133129C5C5C400C79DB6 /* Alert.swift in Sources */,
 				7E6FDB3129901836006775B0 /* TextFieldExtension++.swift in Sources */,
 				7E5ABB64299B801100075740 /* bookmarkCell.swift in Sources */,
 				7E5ABB62299A5A7C00075740 /* BookMarkVC.swift in Sources */,
