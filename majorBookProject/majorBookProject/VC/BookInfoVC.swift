@@ -10,7 +10,7 @@ import Then
 import SnapKit
 import SwiftUI
 
-var model = Book(id: 0, isSaved: false)
+var model = Book(id: 0)
 
 class BookInfoVC: UIViewController,SendDataDelegate {
     

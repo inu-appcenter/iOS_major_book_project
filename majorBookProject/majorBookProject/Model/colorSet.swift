@@ -34,7 +34,7 @@ extension UIColor {
         case .gray5:
             return #colorLiteral(red: 0.4988793731, green: 0.4988793731, blue: 0.4988793731, alpha: 1)
         case .iris:
-            return #colorLiteral(red: 0.5451391339, green: 0.567764163, blue: 0.9572134614, alpha: 1)
+            return #colorLiteral(red: 0.4705882353, green: 0.4745098039, blue: 0.9450980392, alpha: 1)
         }
       }
     

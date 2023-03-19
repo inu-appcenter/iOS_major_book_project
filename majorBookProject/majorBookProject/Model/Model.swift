@@ -12,7 +12,6 @@ import SwiftUI
 struct Book: Codable {
     var author: String?
     var id: Int
-    var isSaved: Bool
     var publisher: String?
     var title: String?
     var type:String?
@@ -33,10 +32,10 @@ struct Welcome: Codable {
     let name, professor, subjectType: String
 }
 
-struct Subject: Codable {
-    let department: String
+struct Subject: Codable { //getSubjects 비회원 로그인 검색 get
+    let departmentName: String
     let id: Int
-    let name, professor, subjectType: String
+    let subjectName, professorName, subjectType: String
 }
 
 struct postSubject: Codable { // 이건 데이터 보낼때 모델(body?)
@@ -48,6 +47,17 @@ struct postSubject: Codable { // 이건 데이터 보낼때 모델(body?)
 struct searchModel: Codable {
     let dropBtn: String
     let searchText: String
+}
+
+struct loginModel: Codable {
+    let email: String
+    let password: String
+}
+
+struct loginSuccessModel: Codable {
+    let msg: String
+    let success: Bool
+    let token: String
 }
 
 

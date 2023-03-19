@@ -8,9 +8,11 @@ import Then
 
 class LoginVC: UIViewController {
     
+    
     //MARK: - Component
     
     private let contentView = UIView()
+    private let token = ""
     
     lazy var searchingIdPw = UIButton().then {
         $0.setTitle("아이디/비밀번호 찾기", for: .normal)
@@ -182,9 +184,23 @@ class LoginVC: UIViewController {
     
     @objc func pushLoginButton(sender: UIButton!) {
         print("버튼 selected")
-        let mainViewController = MainVC()
-        view.window?.rootViewController = UINavigationController(rootViewController: mainViewController)
-        view.window?.rootViewController?.dismiss(animated: true)
+        let loginModel = loginModel(email: idField.text ?? "", password: pwField.text ?? "")
+        
+        requestLogin(data: loginModel) { res in
+            if res.success {
+                print("로그인 성공")
+                let mainViewController = MainVC()
+                self.view.window?.rootViewController = UINavigationController(rootViewController: mainViewController)
+                self.view.window?.rootViewController?.dismiss(animated: true)
+            }
+            else {
+                let alert = Alert()
+                alert.modalPresentationStyle = .overFullScreen
+                self.present(alert,animated: true,completion: nil)
+                
+            }
+            
+        }
     
     }
     
@@ -205,8 +221,6 @@ class LoginVC: UIViewController {
         let notLoginVC = NotLoginVC()
         view.window?.rootViewController = UINavigationController(rootViewController: notLoginVC)
         view.window?.rootViewController?.dismiss(animated: true)
-    
-        
     }
 }
     

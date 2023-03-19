@@ -115,7 +115,7 @@ class NotLoginVC: UIViewController {
         setupLayout()
         setupConstraint()
         configureDropDown()
-        initialSearching()
+//        initialSearching()
        
     }
 
@@ -390,7 +390,7 @@ extension NotLoginVC: UISearchBarDelegate {
 
 extension NotLoginVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("searchingdata count : ",searchingdata.count)
+        
         return searchingdata.count
     }
     
@@ -405,7 +405,7 @@ extension NotLoginVC: UITableViewDataSource, UITableViewDelegate {
         
         switch indexPath.row{
         default:
-            var departmentType = String(searchingdata[indexPath.row].subjectType + " " + searchingdata[indexPath.row].department)
+            let departmentType = String(searchingdata[indexPath.row].subjectType + " " + searchingdata[indexPath.row].departmentName)
             
             requestGetBook(id: searchingdata[indexPath.row].id) {
                 data in
@@ -415,7 +415,7 @@ extension NotLoginVC: UITableViewDataSource, UITableViewDelegate {
                 self.navigationController?.pushViewController(bookInfoVC, animated: true)
                 self.navigationControl()
                 
-                let model = Book(author: data.author ?? "", id: data.id, isSaved: data.isSaved, publisher: data.publisher ?? "", title: data.title ?? "" , type: data.type ?? "", year: data.year)
+                let model = Book(author: data.author ?? "", id: data.id, publisher: data.publisher ?? "", title: data.title ?? "" , type: data.type ?? "", year: data.year)
                 
                 self.delegate?.recieveData(response: model,department: departmentType)
             }
